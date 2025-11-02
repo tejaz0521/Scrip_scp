@@ -1924,9 +1924,10 @@ end)
 
 local Credits = window:AddTab("Credits")
 
-Credits:AddLabel("Wncy Hub").TextSize = 30
+Credits:AddLabel("SCP ON TOP
+DOF ON BOTTOM").TextSize = 30
 
-Credits:AddLabel(" ").TextSize = 30
+Credits:AddLabel("SCP BETTER").TextSize = 30
 
 Credits:AddLabel("Made by / HOYAH").TextSize = 30
 
@@ -1935,5 +1936,6 @@ Credits:AddLabel(" ").TextSize = 30
 Credits:AddLabel("Join My Discord Server").TextSize = 30
 
 Credits:AddLabel(" ").TextSize = 30
+
 
 Credits:AddLabel("Hoyah| Hoyah").TextSize = 30
