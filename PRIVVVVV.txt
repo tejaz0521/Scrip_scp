@@ -1,5 +1,5 @@
 -- CARGA DE LIBRERÍA
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/rafael25ic-blip/phoenix-cracked/refs/heads/main/Librerya%20Phoenix%20Crack"))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/memejames/elerium-v2-ui-library//main/Library", true))()
 
 -- OBTENER NOMBRE DEL JUGADOR
 local player = game.Players.LocalPlayer
@@ -3370,4 +3370,5 @@ Credits:AddLabel("SCP ON TOP")
 Credits:AddLabel("FUCK KTA")
 Credits:AddLabel("SUI🔥")
 Credits:AddLabel("TY FOR USING❤️")Best Lua Dev🔥")
+
 Credits:AddLabel("Script fucked by iblameaabis with love❤️")
