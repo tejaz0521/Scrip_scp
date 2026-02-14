@@ -2121,63 +2121,6 @@ AutoFarm:AddSwitch("Farm OP", function(state)
     warn("[Auto Rep Farm] Estado cambiado a:", state and "ON" or "OFF")
 end)
 
--- Servicios
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Players = game:GetService("Players")
-local Stats = game:GetService("Stats")
-local LocalPlayer = Players.LocalPlayer
-
--- ConfiguraciÃ³n
-local PET_NAME = "Swift Samurai"
-local ROCK_NAME = "Rock5M"
-local PROTEIN_EGG_NAME = "ProteinEgg"
-local PROTEIN_EGG_INTERVAL = 30 * 60
-local REPS_PER_CYCLE = 500
-local REP_DELAY = 0.01
-local ROCK_INTERVAL = 1
-local MAX_PING = 500   -- si pasa esto, pausa
-local MIN_PING = 300   -- si baja de esto, reanuda
-
--- Variables internas
-local HumanoidRootPart
-local lastProteinEggTime = 0
-local lastRockTime = 0
-
--- Funciones
-local function getPing()
-    local success, ping = pcall(function()
-        return Stats.Network.ServerStatsItem["Data Ping"]:GetValue()
-    end)
-    return success and ping or 999
-end
-
-local function updateCharacterRefs()
-    local character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
-    HumanoidRootPart = character:WaitForChild("HumanoidRootPart", 5)
-end
-
-local function equipPet()
-    local petsFolder = LocalPlayer:FindFirstChild("petsFolder")
-    if petsFolder and petsFolder:FindFirstChild("Unique") then
-        for _, pet in pairs(petsFolder.Unique:GetChildren()) do
-            if pet.Name == PET_NAME then
-                ReplicatedStorage.rEvents.equipPetEvent:FireServer("equipPet", pet)
-                break
-            end
-        end
-    end
-end
-
-local function eatProteinEgg()
-    if LocalPlayer:FindFirstChild("Backpack") then
-        for _, item in pairs(LocalPlayer.Backpack:GetChildren()) do
-            if item.Name == PROTEIN_EGG_NAME then
-                ReplicatedStorage.rEvents.eatEvent:FireServer("eat", item)
-                break
-            end
-        end
-    end
-
 
 local leaderstats = player:WaitForChild("leaderstats")
 local strengthStat = leaderstats:WaitForChild("Strength")
