@@ -1655,59 +1655,7 @@ local workoutPositions = {
 }
 
 local workoutLocations = {
-    "Jungle Gym", "Muscle King Gym", "Legend Gym"
-}
-
-FarmingTab:AddSwitch("Start", function(enabled)
-    working = enabled
-
-    if enabled then
-        if selectedLocation and selectedWorkout and workoutPositions[selectedWorkout][selectedLocation] then
-            teleportAndStart(selectedWorkout, workoutPositions[selectedWorkout][selectedLocation])
-        end
-    else
-        stopAutoLift()
-    end
-end)
-
-local locationDropdown = FarmingTab:AddDropdown("Gym", function(location)
-    selectedLocation = location
-
-    if machineDropdown then
-        machineDropdown:Clear()
-    end
-
-    if location == "Jungle Gym" then
-        machineDropdown = FarmingTab:AddDropdown("Machine", function(machine)
-            selectedWorkout = machine
-        end)
-        machineDropdown:Add("Bench Press")
-        machineDropdown:Add("Squat")
-        machineDropdown:Add("Pull Up")
-        machineDropdown:Add("Boulder")
-    elseif location == "Muscle King Gym" then
-        machineDropdown = FarmingTab:AddDropdown("Machine", function(machine)
-            selectedWorkout = machine
-        end)
-        machineDropdown:Add("Bench Press")
-        machineDropdown:Add("Squat")
-        machineDropdown:Add("Pull Up")
-        machineDropdown:Add("Boulder")
-    elseif location == "Legend Gym" then
-        machineDropdown = FarmingTab:AddDropdown("Machine", function(machine)
-            selectedWorkout = machine
-        end)
-        machineDropdown:Add("Bench Press")
-        machineDropdown:Add("Squat")
-        machineDropdown:Add("Pull Up")
-        machineDropdown:Add("Boulder")
-    end
-end)
-
-for _, location in ipairs(workoutLocations) do
-    locationDropdown:Add(location)
-end
-
+    "Jungle Gym", "Muscle King Gym", 
 InventoryTab:AddLabel("Eater:").TextSize = 22
 
 local function activateProteinEgg()
@@ -1729,6 +1677,76 @@ task.spawn(function()
         end
     end
 end)
+
+local AutoFarm = window:AddTab("Farm OP")
+AutoFarm:Show()
+
+
+-- Estado inicial
+getgenv()._AutoRepFarmEnabled = false  
+
+-- Switch en la librerÃ­a
+AutoFarm:AddSwitch("Farm OP", function(state)
+    getgenv()._AutoRepFarmEnabled = state
+    warn("[Auto Rep Farm] Estado cambiado a:", state and "ON" or "OFF")
+end)
+
+-- Servicios
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+local Stats = game:GetService("Stats")
+local LocalPlayer = Players.LocalPlayer
+
+-- ConfiguraciÃ³n
+local PET_NAME = "Swift Samurai"
+local ROCK_NAME = "Rock5M"
+local PROTEIN_EGG_NAME = "ProteinEgg"
+local PROTEIN_EGG_INTERVAL = 30 * 60
+local REPS_PER_CYCLE = 500
+local REP_DELAY = 0.01
+local ROCK_INTERVAL = 1
+local MAX_PING = 500   -- si pasa esto, pausa
+local MIN_PING = 300   -- si baja de esto, reanuda
+
+-- Variables internas
+local HumanoidRootPart
+local lastProteinEggTime = 0
+local lastRockTime = 0
+
+-- Funciones
+local function getPing()
+    local success, ping = pcall(function()
+        return Stats.Network.ServerStatsItem["Data Ping"]:GetValue()
+    end)
+    return success and ping or 999
+end
+
+local function updateCharacterRefs()
+    local character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+    HumanoidRootPart = character:WaitForChild("HumanoidRootPart", 5)
+end
+
+local function equipPet()
+    local petsFolder = LocalPlayer:FindFirstChild("petsFolder")
+    if petsFolder and petsFolder:FindFirstChild("Unique") then
+        for _, pet in pairs(petsFolder.Unique:GetChildren()) do
+            if pet.Name == PET_NAME then
+                ReplicatedStorage.rEvents.equipPetEvent:FireServer("equipPet", pet)
+                break
+            end
+        end
+    end
+end
+
+local function eatProteinEgg()
+    if LocalPlayer:FindFirstChild("Backpack") then
+        for _, item in pairs(LocalPlayer.Backpack:GetChildren()) do
+            if item.Name == PROTEIN_EGG_NAME then
+                ReplicatedStorage.rEvents.eatEvent:FireServer("eat", item)
+                break
+            end
+        end
+    end
 
 local switch = InventoryTab:AddSwitch("Egg Devour", function(state)
     running = state
