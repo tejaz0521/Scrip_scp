@@ -51,21 +51,6 @@ local function removePortals()
 end
 removePortals()
 
-local blockedFrames = {
-    "strengthFrame",
-    "durabilityFrame",
-    "agilityFrame",
-    "evilKarmaFrame",
-    "goodKarmaFrame",
-}
-
-for _, name in ipairs(blockedFrames) do
-    local frame = ReplicatedStorage:FindFirstChild(name)
-    if frame and frame:IsA("GuiObject") then
-        frame.Visible = false
-    end
-end
-
 ReplicatedStorage.ChildAdded:Connect(function(child)
     if table.find(blockedFrames, child.Name) and child:IsA("GuiObject") then
         child.Visible = false
