@@ -33,37 +33,6 @@ local function setupAntiAFK()
 end
 setupAntiAFK()
 
-       local r111_1 = r101_1:AddSwitch("Safety Mode", r114_1)
-          r111_1:Set(true)
-          local r112_1 = function()
-            -- line: [0, 0] id: 124
-            local r1_124 = time()
-            local r2_124 = upval_1()
-            if not upval_2 then
-              local r3_124 = time()
-              if 0.5 < r3_124 - r1_124 then
-                r3_124 = upval_1()
-                r3_124 = time()
-              end
-              if not upval_3 then
-                r3_124 = upval_4(r3_124)
-                if r3_124 then
-                end
-              end
-              local r4_124 = math.clamp(r3_124 / 2500, 0.001, 0.1)
-              local r6_124 = math.min(upval_5, upval_5)
-              for r8_124 = 1, r6_124, 1 do
-                upval_0.FireServer(upval_0, "rep")
-                if upval_5 % 50 == 0 then
-                  task.wait(0)
-                end
-              end
-              task.wait(r4_124)
-            end
-            return
-          end
-
-
 local function removePortals()
     for _, portal in pairs(game:GetDescendants()) do
         if portal.Name == "RobloxForwardPortals" then
