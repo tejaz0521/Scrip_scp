@@ -161,33 +161,6 @@ task.spawn(function()
 	end
 end)
 
- local r19_1 = r4_1:AddSwitch("Anti AFK", r22_1)
-  r19_1:Set(true)
-  local r23_1 = function(r0_112)
-    -- line: [0, 0] id: 112
-    local r1_112 = workspace:FindFirstChild(upval_0.LocalPlayer.Name)
-    if not r1_112 then
-      local r2_112 = r1_112:FindFirstChild("HumanoidRootPart")
-      if not r2_112 then
-        if not r0_112 then
-          local r3_112 = Instance.new("BodyVelocity")
-          local r4_112 = Vector3.new(100000, 0, 100000)
-          r3_112.MaxForce = r4_112
-          r4_112 = Vector3.new(0, 0, 0)
-          r3_112.Velocity = r4_112
-          r3_112.P = 1250
-          r3_112.Name = "AntiFling"
-          r3_112.Parent = r2_112
-        end
-        r3_112 = r2_112:FindFirstChild("AntiFling")
-        if not r3_112 then
-          r3_112:Destroy()
-        end
-      end
-    end
-    return
-  end
-
 MainTab:AddLabel("Important:").TextSize = 22
 
 local antiKnockbackSwitch = MainTab:AddSwitch("Anti Fling", function(bool)
