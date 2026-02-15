@@ -67,6 +67,7 @@ local TeleportTab = window:AddTab("Teleports")
 local StatsTab = window:AddTab("Stats")
 local infoTab = window:AddTab("Info")
 KillingTab:Show()
+local AutoFarmTab = Farming: AddTab("Farm OP")
 
 infoTab:AddLabel("Made by TEJAZ").TextSize = 20
 infoTab:AddLabel("Official Discord: https://discord.gg/nDSy4jdVDc ")
