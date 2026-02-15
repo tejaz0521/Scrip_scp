@@ -1991,15 +1991,6 @@ task.spawn(function()
     end
 end)
 
--- Estado inicial
-getgenv()._AutoRepFarmEnabled = false  
-
--- Switch en la librerÃ­a
-v2 farm:AddSwitch("Farm OP", function(state)
-    getgenv()._AutoRepFarmEnabled = state
-    warn("[Auto Rep Farm] Estado cambiado a:", state and "ON" or "OFF")
-end)
-
 local Gift = window:AddTab("Gift")
 Gift:AddLabel("Gifting Protein egg:").TextSize = 22
 
