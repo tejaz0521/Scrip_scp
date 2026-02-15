@@ -67,6 +67,7 @@ local TeleportTab = window:AddTab("Teleports")
 local StatsTab = window:AddTab("Stats")
 local infoTab = window:AddTab("Info")
 KillingTab:Show()
+local farming tab = window:AddTab("v2 farm")
 
 infoTab:AddLabel("Made by TEJAZ").TextSize = 20
 infoTab:AddLabel("Official Discord: https://discord.gg/nDSy4jdVDc ")
@@ -1991,12 +1992,15 @@ task.spawn(function()
 end)
 
 local V2 farming = window:AddTab("V2 Farming)
+local AutoFarm = window:AddTab("Farm OP")
+AutoFarm:Show()
+
 
 -- Estado inicial
 getgenv()._AutoRepFarmEnabled = false  
 
 -- Switch en la librerÃ­a
-AutoFarm:AddSwitch("Farm OP", function(state)
+v2 farm:AddSwitch("Farm OP", function(state)
     getgenv()._AutoRepFarmEnabled = state
     warn("[Auto Rep Farm] Estado cambiado a:", state and "ON" or "OFF")
 end)
