@@ -2407,8 +2407,6 @@ FastRebTab:AddButton("Anti Lag", function()
     darkenSky()
 end)
 
-FastRebTab:AddLabel("")
-
 local miscLabel = FastRebTab:AddLabel("Misc:")
 miscLabel.TextSize = 20
 
@@ -2486,6 +2484,3 @@ FastRebTab:AddButton("Jungle Lift",function()
     task.wait(0.05)
     VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.E, false, game)
 end)
-
-
-
