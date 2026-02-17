@@ -67,6 +67,7 @@ local TeleportTab = window:AddTab("Teleports")
 local StatsTab = window:AddTab("Stats")
 local infoTab = window:AddTab("Info")
 KillingTab:Show()
+local farmTab = window:AddTab("rebirthing")
 
 infoTab:AddLabel("Made by TEJAZ").TextSize = 20
 infoTab:AddLabel("Official Discord: https://discord.gg/nDSy4jdVDc ")
@@ -2107,7 +2108,7 @@ task.spawn(function()
     end
 end)
 
-local r97_1 = r87_1:AddSwitch("Fast Rebirth", r100_1)
+local tab ("rebirthing") = window:AddSwitch("Fast Rebirth", r100_1)
           local r103_1 = function(r0_51)
             -- line: [0, 0] id: 51
             upval_0 = r0_51
@@ -2226,6 +2227,6 @@ local r97_1 = r87_1:AddSwitch("Fast Rebirth", r100_1)
             upval_0 = r0_122
             if not upval_0 then
               task.spawn(upval_1)
-            end
-            return
-          end
+           end
+   return
+end
