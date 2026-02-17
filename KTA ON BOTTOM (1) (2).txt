@@ -2106,3 +2106,126 @@ task.spawn(function()
         task.wait(0.25)
     end
 end)
+
+local r97_1 = r87_1:AddSwitch("Fast Rebirth", r100_1)
+          local r103_1 = function(r0_51)
+            -- line: [0, 0] id: 51
+            upval_0 = r0_51
+            if not upval_0 then
+              if game.Players.LocalPlayer.Character then
+                local r2_51 = game.Players.LocalPlayer.CharacterAdded:Wait()
+              end
+              local r3_51 = r2_51:WaitForChild("HumanoidRootPart")
+              local r6_51 = function()
+                -- line: [0, 0] id: 52
+                if not upval_0 then
+                  local r1_52 = Vector3.new(0, 0, 0)
+                  upval_1.Velocity = r1_52
+                  r1_52 = Vector3.new(0, 0, 0)
+                  upval_1.RotVelocity = r1_52
+                  r1_52 = CFrame.new(upval_2)
+                  upval_1.CFrame = r1_52
+                  wait(0.05)
+                end
+                return
+              end
+              local r5_51 = coroutine.create(r6_51)
+              upval_1 = r5_51
+              coroutine.resume(upval_1)
+            end
+            return
+          end
+          r100_1 = r87_1:AddSwitch("Lock Position", r103_1)
+          r100_1:Set(false)
+          local r101_1 = r87_1:AddLabel("Pets")
+          r101_1.TextSize = 20
+          local r104_1 = function()
+            -- line: [0, 0] id: 33
+            upval_0()
+            upval_1("Swift Samurai")
+            return
+          end
+          r87_1:AddButton("Equip Swift Samurai", r104_1)
+          local r104_1 = function()
+            -- line: [0, 0] id: 11
+            upval_0()
+            upval_1("Tribal Overlord")
+            return
+          end
+          r87_1:AddButton("Equip Tribal Overlord", r104_1)
+          r101_1 = r1_1:AddTab("Speed Farming")
+          local r102_1 = r101_1:AddLabel("Farming")
+          r102_1.TextSize = 20
+          r103_1 = game.Players.LocalPlayer:WaitForChild("muscleEvent")
+          local r108_1 = game:GetService("Stats")
+          local r109_1 = function()
+            -- line: [0, 0] id: 54
+            return upval_0:GetValue(upval_0)
+            return 
+          end
+          local r110_1 = function(r0_78)
+            -- line: [0, 0] id: 78
+            if r0_78 < 80 then
+              return 500
+            end
+            if r0_78 < 150 then
+              return 300
+            end
+            if r0_78 < 250 then
+              return 100
+            end
+            return 50
+          end
+          local r114_1 = function(r0_79)
+            -- line: [0, 0] id: 79
+            local r1_79 = tonumber(r0_79)
+            if not r1_79 then
+              local r3_79 = math.floor(r1_79)
+              local r2_79 = math.clamp(r3_79, 1, 1000)
+              upval_0 = r2_79
+            end
+            return
+          end
+          r101_1:AddTextBox("Base Speed", r114_1, {placeholder = "500"})
+          local r114_1 = function(r0_102)
+            -- line: [0, 0] id: 102
+            upval_0 = r0_102
+            return
+          end
+          local r111_1 = r101_1:AddSwitch("Safety Mode", r114_1)
+          r111_1:Set(true)
+          local r112_1 = function()
+            -- line: [0, 0] id: 124
+            local r1_124 = time()
+            local r2_124 = upval_1()
+            if not upval_2 then
+              local r3_124 = time()
+              if 0.5 < r3_124 - r1_124 then
+                r3_124 = upval_1()
+                r3_124 = time()
+              end
+              if not upval_3 then
+                r3_124 = upval_4(r3_124)
+                if r3_124 then
+                end
+              end
+              local r4_124 = math.clamp(r3_124 / 2500, 0.001, 0.1)
+              local r6_124 = math.min(upval_5, upval_5)
+              for r8_124 = 1, r6_124, 1 do
+                upval_0.FireServer(upval_0, "rep")
+                if upval_5 % 50 == 0 then
+                  task.wait(0)
+                end
+              end
+              task.wait(r4_124)
+            end
+            return
+          end
+          local r116_1 = function(r0_122)
+            -- line: [0, 0] id: 122
+            upval_0 = r0_122
+            if not upval_0 then
+              task.spawn(upval_1)
+            end
+            return
+          end
