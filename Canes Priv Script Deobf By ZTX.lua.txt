@@ -1,0 +1,2175 @@
+-- filename: 
+-- version: lua51
+-- line: [0, 0] id: 1
+local r0_1 = loadstring(game:HttpGet("https://raw.githubusercontent.com/memejames/elerium-v2-ui-library//main/Library", true))
+r0_1 = r0_1()
+local r5_1 = r0_1:AddWindow(2, 252)
+r5_1 = Vector2.new(600, 600)
+local r1_1 = r0_1:AddWindow(r0_1, "Canes Priv Script������", {main_color = r5_1, min_size = r5_1, can_resize = false})
+local r2_1 = game:GetService("ReplicatedStorage")
+local r4_1, r5_1, r6_1 = ipairs(r3_1)
+local r9_1 = r2_1:FindFirstChild(252)
+if not r9_1 then
+  local r10_1 = r9_1:IsA("GuiObject")
+  if not r10_1 then
+    r9_1.Visible = false
+  end
+end
+for r7_1, r8_1 in r4_1 do
+  local r6_1 = function(r0_137)
+    -- line: [0, 0] id: 137
+    local r1_137 = table.find(upval_0, r0_137.Name)
+    if not r1_137 then
+      r1_137 = r0_137:IsA("GuiObject")
+      if not r1_137 then
+        r0_137.Visible = false
+      end
+    end
+    return
+  end
+  r2_1.ChildAdded:Connect(r6_1)
+  r4_1 = r1_1:AddTab("Main")
+  r4_1:Show()
+  r5_1 = r4_1:AddLabel("Settings")
+  r5_1.TextSize = 20
+  r5_1 = game:GetService("Players")
+  r6_1 = game:GetService("ReplicatedStorage")
+  local r13_1 = function(r0_43)
+    -- line: [0, 0] id: 43
+    local r1_43 = tonumber(r0_43:match("%d+"))
+    if not r1_43 then
+      upval_0 = r1_43
+    end
+    return
+  end
+  r4_1:AddTextBox("Size", r13_1)
+  local r13_1 = function(r0_74)
+    -- line: [0, 0] id: 74
+    upval_0 = r0_74
+    return
+  end
+  r10_1 = r4_1:AddSwitch("Set Size", r13_1)
+  r10_1:Set(false)
+  local r12_1 = function()
+    -- line: [0, 0] id: 81
+    if not upval_0 then
+      if not upval_1.LocalPlayer.Character then
+        local r1_81 = upval_1.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+        if not r1_81 then
+          upval_2:InvokeServer("changeSize", upval_3)
+        end
+      end
+    end
+    task.wait(0.5)
+    return
+  end
+  task.spawn(r12_1)
+  local r16_1 = function(r0_5)
+    -- line: [0, 0] id: 5
+    local r1_5 = tonumber(r0_5:match("%d+"))
+    if not r1_5 then
+      upval_0 = r1_5
+    end
+    return
+  end
+  r4_1:AddTextBox("Speed", r16_1)
+  local r16_1 = function(r0_125)
+    -- line: [0, 0] id: 125
+    upval_0 = r0_125
+    return
+  end
+  r13_1 = r4_1:AddSwitch("Set Speed", r16_1)
+  r13_1:Set(false)
+  local r15_1 = function()
+    -- line: [0, 0] id: 66
+    if not upval_0 then
+      if not upval_1.LocalPlayer.Character then
+        local r1_66 = upval_1.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+        if not r1_66 then
+          upval_2:InvokeServer("changeSpeed", upval_3)
+        end
+      end
+    end
+    task.wait(0.5)
+    return
+  end
+  task.spawn(r15_1)
+  local r14_1 = r4_1:AddLabel("Misc")
+  r14_1.TextSize = 20
+  local r17_1 = function(r0_72)
+    -- line: [0, 0] id: 72
+    local r2_72 = upval_0.LocalPlayer:FindFirstChild("hidePets")
+    if not r2_72 then
+      upval_0.LocalPlayer.hidePets.Value = r0_72
+    end
+    return
+  end
+  r14_1 = r4_1:AddSwitch("Show Pets", r17_1)
+  r14_1:Set(false)
+  r15_1 = game:GetService("VirtualUser")
+  local r17_1 = function()
+    -- line: [0, 0] id: 13
+    if upval_0 then
+      local r2_13 = function()
+        -- line: [0, 0] id: 14
+        upval_0:CaptureController()
+        upval_0:ClickButton2(upval_0)
+        return
+      end
+      local r0_13 = upval_1.LocalPlayer.Idled:Connect(r2_13)
+      upval_0 = r0_13
+    end
+    return
+  end
+  local r18_1 = function()
+    -- line: [0, 0] id: 108
+    if not upval_0 then
+      upval_0:Disconnect()
+      upval_0 = nil
+    end
+    return
+  end
+  local r22_1 = function(r0_101)
+    -- line: [0, 0] id: 101
+    if not r0_101 then
+      upval_0()
+    end
+    upval_1()
+    return
+  end
+  local r19_1 = r4_1:AddSwitch("Anti AFK", r22_1)
+  r19_1:Set(true)
+  local r23_1 = function(r0_112)
+    -- line: [0, 0] id: 112
+    local r1_112 = workspace:FindFirstChild(upval_0.LocalPlayer.Name)
+    if not r1_112 then
+      local r2_112 = r1_112:FindFirstChild("HumanoidRootPart")
+      if not r2_112 then
+        if not r0_112 then
+          local r3_112 = Instance.new("BodyVelocity")
+          local r4_112 = Vector3.new(100000, 0, 100000)
+          r3_112.MaxForce = r4_112
+          r4_112 = Vector3.new(0, 0, 0)
+          r3_112.Velocity = r4_112
+          r3_112.P = 1250
+          r3_112.Name = "AntiFling"
+          r3_112.Parent = r2_112
+        end
+        r3_112 = r2_112:FindFirstChild("AntiFling")
+        if not r3_112 then
+          r3_112:Destroy()
+        end
+      end
+    end
+    return
+  end
+  local r20_1 = r4_1:AddSwitch("Anti Fling", r23_1)
+  local r21_1 = r1_1:AddTab("Specs")
+  r22_1 = r21_1:AddLabel("Player:")
+  r22_1.TextSize = 20
+  local r22_1 = function(r0_18)
+    -- line: [0, 0] id: 18
+    for r5_18 = #r1_18, 1, -1 do
+      if 10 ^ "T" * 3 <= r0_18 then
+        return string.format("%.2f%s", r0_18 / 10 ^ "T" * 3, r1_18["T"])
+        return 
+      end
+    end
+    return string.format("%.2f", r0_18)
+    return 
+  end
+  local r26_1 = function(r0_87)
+    -- line: [0, 0] id: 87
+    local r1_87, r2_87, r3_87 = pairs(upval_0)
+    r5_87:Remove()
+    for r4_87, r5_87 in r1_87 do
+      upval_0 = r1_87
+      upval_1 = r0_87
+      if not upval_2 then
+      end
+      if not r0_87 then
+        r1_87 = r0_87:WaitForChild("leaderstats")
+        r2_87 = r1_87:WaitForChild("Strength")
+        r3_87 = r1_87:WaitForChild("Rebirths")
+        r4_87 = r0_87:WaitForChild("Durability")
+        r5_87 = r1_87:WaitForChild("Kills")
+        local r6_87 = r0_87:WaitForChild("Agility")
+        local r7_87 = r0_87:WaitForChild("evilKarma")
+        local r8_87 = r0_87:WaitForChild("goodKarma")
+        local r9_87 = r1_87:WaitForChild("Brawls")
+        local r14_87 = upval_3:AddLabel()
+        local r11_87 = upval_3:AddLabel(upval_3, "�����Strength: " .. r14_87)
+        upval_0.strengthLabel = r11_87
+        r14_87 = upval_3:AddLabel()
+        r11_87 = upval_3:AddLabel(upval_3, "��️Rebirths: " .. r14_87)
+        upval_0.rebirthsLabel = r11_87
+        r14_87 = upval_3:AddLabel()
+        r11_87 = upval_3:AddLabel(upval_3, "�����️Durability: " .. r14_87)
+        upval_0.durabilityLabel = r11_87
+        r14_87 = upval_3:AddLabel()
+        r11_87 = upval_3:AddLabel(upval_3, "�����Kills: " .. r14_87)
+        upval_0.killsLabel = r11_87
+        r14_87 = upval_3:AddLabel()
+        r11_87 = upval_3:AddLabel(upval_3, "��Agility: " .. r14_87)
+        upval_0.agilityLabel = r11_87
+        r14_87 = upval_3:AddLabel()
+        r11_87 = upval_3:AddLabel(upval_3, "�����Evil Karma: " .. r14_87)
+        upval_0.evilKarmaLabel = r11_87
+        r14_87 = upval_3:AddLabel()
+        r11_87 = upval_3:AddLabel(upval_3, "�����Good Karma: " .. r14_87)
+        upval_0.goodKarmaLabel = r11_87
+        r14_87 = upval_3:AddLabel()
+        r11_87 = upval_3:AddLabel(upval_3, "��️Brawls: " .. r14_87)
+        upval_0.brawlsLabel = r11_87
+        local r11_87 = function()
+          -- line: [0, 0] id: 88
+          if not upval_0 then
+            if not upval_0.Parent then
+              wait(1)
+              local r3_88 = upval_1.strengthLabel:SetText()
+              upval_1.strengthLabel:SetText(upval_1.strengthLabel, "�����Strength: " .. r3_88)
+              r3_88 = upval_1.rebirthsLabel:SetText()
+              upval_1.rebirthsLabel:SetText(upval_1.rebirthsLabel, "��️Rebirths: " .. r3_88)
+              r3_88 = upval_1.durabilityLabel:SetText()
+              upval_1.durabilityLabel:SetText(upval_1.durabilityLabel, "�����️Durability: " .. r3_88)
+              r3_88 = upval_1.killsLabel:SetText()
+              upval_1.killsLabel:SetText(upval_1.killsLabel, "�����Kills: " .. r3_88)
+              r3_88 = upval_1.agilityLabel:SetText()
+              upval_1.agilityLabel:SetText(upval_1.agilityLabel, "��Agility: " .. r3_88)
+              r3_88 = upval_1.evilKarmaLabel:SetText()
+              upval_1.evilKarmaLabel:SetText(upval_1.evilKarmaLabel, "�����Evil Karma: " .. r3_88)
+              r3_88 = upval_1.goodKarmaLabel:SetText()
+              upval_1.goodKarmaLabel:SetText(upval_1.goodKarmaLabel, "�����Good Karma: " .. r3_88)
+              r3_88 = upval_1.brawlsLabel:SetText()
+              upval_1.brawlsLabel:SetText(upval_1.brawlsLabel, "��️Brawls: " .. r3_88)
+            end
+          end
+          return
+        end
+        spawn(r11_87)
+      end
+      return
+  end
+  local r27_1 = function()
+    -- line: [0, 0] id: 117
+    local r0_117 = game:GetService("Players")
+    return r0_117:GetPlayers(r0_117)
+    return 
+  end
+  local r31_1 = function(r0_12)
+    -- line: [0, 0] id: 12
+    local r1_12 = upval_0()
+    local r3_12, r4_12, r5_12 = ipairs(r1_12)
+    if r0_12 == r7_12.DisplayName .. " | " .. r7_12.Name then
+    end
+    for r6_12, r7_12 in r3_12 do
+      upval_1(r7_12)
+      if not upval_2 then
+      end
+      return
+  end
+  local r28_1 = r4_1:AddDropdown("Choose Player", r31_1)
+  local r29_1, r30_1, r31_1 = ipairs(r27_1())
+  r28_1:Add(r33_1.DisplayName .. " | " .. r33_1.Name)
+  for r32_1, r33_1 in r29_1 do
+    r29_1 = game:GetService("Players")
+    local r31_1 = function(r0_38)
+      -- line: [0, 0] id: 38
+      upval_0:Add(r0_38.DisplayName .. " | " .. r0_38.Name)
+      return
+    end
+    r29_1.PlayerAdded:Connect(r31_1)
+    r29_1 = game:GetService("Players")
+    local r31_1 = function(r0_118)
+      -- line: [0, 0] id: 118
+      upval_0:Remove(r0_118.DisplayName .. " | " .. r0_118.Name)
+      if r0_118 == upval_1 then
+        if not upval_2 then
+        end
+      end
+      return
+    end
+    r29_1.PlayerRemoving:Connect(r31_1)
+    local r32_1 = function(r0_69)
+      -- line: [0, 0] id: 69
+      return
+    end
+    r29_1 = r4_1:AddSwitch("Spectate Player", r32_1)
+    r29_1:Set(false)
+    r4_1:AddLabel("")
+    r30_1 = r4_1:AddLabel("Player Stats:")
+    r30_1.TextSize = 20
+    r30_1 = r1_1:AddTab("Killer")
+    local r31_1 = function()
+      -- line: [0, 0] id: 90
+      if game.Players.LocalPlayer.Character then
+      end
+      task.wait()
+      if not game.Players.LocalPlayer.Character then
+      end
+      return game.Players.LocalPlayer.Character
+    end
+    local r32_1 = function()
+      -- line: [0, 0] id: 136
+      local r0_136, r1_136, r2_136 = pairs(game.Players.LocalPlayer.Backpack:GetChildren())
+      if r4_136.Name == "Punch" then
+        local r5_136 = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+        if not r5_136 then
+          game.Players.LocalPlayer.Character.Humanoid:EquipTool(r4_136)
+        end
+      end
+      for r3_136, r4_136 in r0_136 do
+        game.Players.LocalPlayer.muscleEvent:FireServer("punch", "leftHand")
+        game.Players.LocalPlayer.muscleEvent:FireServer("punch", "rightHand")
+        return
+    end
+    local r33_1 = function(r0_39)
+      -- line: [0, 0] id: 39
+      if not r0_39 then
+        if not r0_39.Character then
+          local r1_39 = r0_39.Character:FindFirstChild("HumanoidRootPart")
+          if not r1_39 then
+            r1_39 = r0_39.Character:FindFirstChild("Humanoid")
+            if not r1_39 then
+              if 0 >= r0_39.Character.Humanoid.Health then
+              end
+            end
+          end
+        end
+        return false
+    end
+    local r34_1 = function(r0_7)
+      -- line: [0, 0] id: 7
+      local r1_7 = upval_0(r0_7)
+      if r1_7 then
+        return
+      end
+      r1_7 = upval_1()
+      if not r1_7 then
+        local r2_7 = r1_7:FindFirstChild("LeftHand")
+        if not r2_7 then
+          local r3_7 = function()
+            -- line: [0, 0] id: 8
+            firetouchinterest(upval_0.Character.HumanoidRootPart, upval_1.LeftHand, 0)
+            firetouchinterest(upval_0.Character.HumanoidRootPart, upval_1.LeftHand, 1)
+            upval_2()
+            return
+          end
+          pcall(r3_7)
+        end
+      end
+      return
+    end
+    local r35_1 = r30_1:AddLabel("Misc")
+    r35_1.TextSize = 20
+    local r38_1 = function(r0_63)
+      -- line: [0, 0] id: 63
+      local r2_63, r3_63, r4_63 = pairs(game.Players.LocalPlayer.petsFolder:GetChildren())
+      local r7_63 = r6_63:IsA("Folder")
+      if not r7_63 then
+        local r7_63, r8_63, r9_63 = pairs(r6_63:GetChildren())
+        local r12_63 = game:GetService("ReplicatedStorage")
+        r12_63.rEvents.equipPetEvent:FireServer("unequipPet", r11_63)
+        for r10_63, r11_63 in r7_63 do
+        end
+        for r5_63, r6_63 in r2_63 do
+          task.wait(0.2)
+          local r4_63, r5_63, r6_63 = pairs(game.Players.LocalPlayer.petsFolder.Unique:GetChildren())
+          if r8_63.Name == r0_63 then
+            table.insert(r3_63, r8_63)
+          end
+          for r7_63, r8_63 in r4_63 do
+            r5_63 = math.min(8, #r3_63)
+            for r7_63 = 1, r5_63, 1 do
+              r8_63 = game:GetService("ReplicatedStorage")
+              r8_63.rEvents.equipPetEvent:FireServer("equipPet", r3_63[#r3_63])
+              task.wait(0.1)
+            end
+            return
+    end
+    r35_1 = r30_1:AddDropdown("Select Pet", r38_1)
+    r35_1:Add("Wild Wizard")
+    r35_1:Add("Mighty Monster")
+    local r39_1 = function()
+      -- line: [0, 0] id: 60
+      local r1_60 = function()
+        -- line: [0, 0] id: 61
+        if not game.Players.LocalPlayer.Character then
+          local r1_61 = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+          if r1_61 then
+          end
+          return
+        end
+        r1_61 = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+        local r2_61, r3_61, r4_61 = pairs(r1_61:GetPlayingAnimationTracks())
+        if not r6_61.Animation then
+          local r8_61 = r6_61.Name:lower()
+          if upval_0[r6_61.Animation.AnimationId] then
+            local r9_61 = r8_61:match("punch")
+            if r9_61 then
+              r9_61 = r8_61:match("attack")
+              if r9_61 then
+                r9_61 = r8_61:match("right")
+                if not r9_61 then
+                end
+              end
+            end
+            r6_61:Stop()
+          end
+        end
+        for r5_61, r6_61 in r2_61 do
+          if _G.AnimBlockConnection then
+            local r4_61 = function(r0_62)
+              -- line: [0, 0] id: 62
+              if not r0_62.Animation then
+                local r2_62 = r0_62.Name:lower()
+                if upval_0[r0_62.Animation.AnimationId] then
+                  local r3_62 = r2_62:match("punch")
+                  if r3_62 then
+                    r3_62 = r2_62:match("attack")
+                    if r3_62 then
+                      r3_62 = r2_62:match("right")
+                      if not r3_62 then
+                      end
+                    end
+                  end
+                  r0_62:Stop()
+                end
+              end
+              return
+            end
+            r2_61 = r1_61.AnimationPlayed:Connect(r4_61)
+            _G.AnimBlockConnection = r2_61
+          end
+          return
+      end
+      r1_60()
+      return
+    end
+    r30_1:AddButton("Remove Attack Animations", r39_1)
+    r30_1:AddLabel("")
+    local r36_1 = r30_1:AddLabel("Auto Kill")
+    r36_1.TextSize = 20
+    if _G.whitelistedPlayers then
+    end
+    _G.whitelistedPlayers = r37_1
+    if _G.blacklistedPlayers then
+    end
+    _G.blacklistedPlayers = r37_1
+    local r36_1 = function(r0_119)
+      -- line: [0, 0] id: 119
+      local r1_119, r2_119, r3_119 = ipairs(_G.whitelistedPlayers)
+      local r6_119 = r5_119:lower()
+      local r7_119 = r0_119.Name:lower()
+      if r6_119 == r7_119 then
+        return true
+      end
+      for r4_119, r5_119 in r1_119 do
+        return false
+    end
+    local r37_1 = function(r0_86)
+      -- line: [0, 0] id: 86
+      local r1_86, r2_86, r3_86 = ipairs(_G.blacklistedPlayers)
+      local r6_86 = r5_86:lower()
+      local r7_86 = r0_86.Name:lower()
+      if r6_86 == r7_86 then
+        return true
+      end
+      for r4_86, r5_86 in r1_86 do
+        return false
+    end
+    local r38_1 = function(r0_58)
+      -- line: [0, 0] id: 58
+      return r0_58.DisplayName .. " | " .. r0_58.Name
+    end
+    local r42_1 = function(r0_135)
+      -- line: [0, 0] id: 135
+      local r1_135 = r0_135:match("| (.+)$")
+      if not r1_135 then
+        local r2_135 = r1_135:gsub("^%s*(.-)%s*$", "%1")
+        local r2_135, r3_135, r4_135 = ipairs(_G.whitelistedPlayers)
+        local r7_135 = r6_135:lower()
+        local r8_135 = r2_135:lower()
+        if r7_135 == r8_135 then
+          return
+        end
+        for r5_135, r6_135 in r2_135 do
+          table.insert(_G.whitelistedPlayers, r2_135)
+        end
+        return
+    end
+    r39_1 = r30_1:AddDropdown("Whitelist", r42_1)
+    local r43_1 = function(r0_82)
+      -- line: [0, 0] id: 82
+      _G.killAll = r0_82
+      if not r0_82 then
+        if _G.killAllConnection then
+          local r2_82 = game:GetService("RunService")
+          local r4_82 = function()
+            -- line: [0, 0] id: 83
+            if not _G.killAll then
+              local r1_83 = game:GetService("Players")
+              local r0_83, r1_83, r2_83 = ipairs(r1_83:GetPlayers())
+              if r4_83 ~= game.Players.LocalPlayer then
+                local r5_83 = upval_0(r4_83)
+                if r5_83 then
+                  upval_1(r4_83)
+                end
+              end
+              for r3_83, r4_83 in r0_83 do
+              end
+              return
+          end
+          r2_82 = r2_82.Heartbeat:Connect(r4_82)
+          _G.killAllConnection = r2_82
+        end
+        if not _G.killAllConnection then
+          _G.killAllConnection:Disconnect()
+          _G.killAllConnection = nil
+        end
+      end
+      return
+    end
+    local r40_1 = r30_1:AddSwitch("Kill Everyone", r43_1)
+    r40_1:Set(false)
+    local r44_1 = function(r0_95)
+      -- line: [0, 0] id: 95
+      _G.whitelistFriends = r0_95
+      if not r0_95 then
+        local r1_95, r2_95, r3_95 = pairs(game.Players:GetPlayers())
+        if r5_95 ~= game.Players.LocalPlayer then
+          local r6_95 = r5_95:IsFriendsWith(game.Players.LocalPlayer.UserId)
+          if not r6_95 then
+            local r8_95, r9_95, r10_95 = ipairs(_G.whitelistedPlayers)
+            local r13_95 = r12_95:lower()
+            local r14_95 = r5_95.Name:lower()
+            if r13_95 == r14_95 then
+            end
+            for r11_95, r12_95 in r8_95 do
+              if true then
+                table.insert(_G.whitelistedPlayers, r5_95.Name)
+              end
+            end
+          end
+          for r4_95, r5_95 in r1_95 do
+          end
+          return
+    end
+    local r41_1 = r30_1:AddSwitch("Whitelist Friends", r44_1)
+    r41_1:Set(false)
+    r30_1:AddLabel("")
+    r42_1 = r30_1:AddLabel("Kill Targets")
+    r42_1.TextSize = 20
+    local r45_1 = function(r0_110)
+      -- line: [0, 0] id: 110
+      local r1_110 = r0_110:match("| (.+)$")
+      if not r1_110 then
+        local r2_110 = r1_110:gsub("^%s*(.-)%s*$", "%1")
+        local r2_110, r3_110, r4_110 = ipairs(_G.blacklistedPlayers)
+        local r7_110 = r6_110:lower()
+        local r8_110 = r2_110:lower()
+        if r7_110 == r8_110 then
+          return
+        end
+        for r5_110, r6_110 in r2_110 do
+          table.insert(_G.blacklistedPlayers, r2_110)
+        end
+        return
+    end
+    r42_1 = r30_1:AddDropdown("Blacklist", r45_1)
+    r44_1 = game:GetService("Players")
+    local r43_1, r44_1, r45_1 = ipairs(r44_1:GetPlayers())
+    if r47_1 ~= game.Players.LocalPlayer then
+      local r48_1 = r38_1(r47_1)
+      r39_1:Add(r48_1)
+      r42_1:Add(r48_1)
+    end
+    for r46_1, r47_1 in r43_1 do
+      r43_1 = game:GetService("Players")
+      local r45_1 = function(r0_123)
+        -- line: [0, 0] id: 123
+        if r0_123 ~= game.Players.LocalPlayer then
+          local r1_123 = upval_0(r0_123)
+          upval_1:Add(r1_123)
+          upval_2:Add(r1_123)
+        end
+        return
+      end
+      r43_1.PlayerAdded:Connect(r45_1)
+      r43_1 = game:GetService("Players")
+      local r45_1 = function(r0_40)
+        -- line: [0, 0] id: 40
+        local r1_40 = upval_0(r0_40)
+        local r2_40, r3_40, r4_40 = pairs(upval_1:GetItems())
+        if r6_40.Text == r1_40 then
+          upval_1:Remove(r6_40.Text)
+        end
+        for r5_40, r6_40 in r2_40 do
+          local r2_40, r3_40, r4_40 = pairs(upval_2:GetItems())
+          if r6_40.Text == r1_40 then
+            upval_2:Remove(r6_40.Text)
+          end
+          for r5_40, r6_40 in r2_40 do
+            return
+      end
+      r43_1.PlayerRemoving:Connect(r45_1)
+      local r46_1 = function(r0_91)
+        -- line: [0, 0] id: 91
+        _G.killBlacklistedOnly = r0_91
+        if not r0_91 then
+          if _G.blacklistKillConnection then
+            local r2_91 = game:GetService("RunService")
+            local r4_91 = function()
+              -- line: [0, 0] id: 92
+              if not _G.killBlacklistedOnly then
+                local r1_92 = game:GetService("Players")
+                local r0_92, r1_92, r2_92 = ipairs(r1_92:GetPlayers())
+                if r4_92 ~= game.Players.LocalPlayer then
+                  local r5_92 = upval_0(r4_92)
+                  if not r5_92 then
+                    upval_1(r4_92)
+                  end
+                end
+                for r3_92, r4_92 in r0_92 do
+                end
+                return
+            end
+            r2_91 = r2_91.Heartbeat:Connect(r4_91)
+            _G.blacklistKillConnection = r2_91
+          end
+          if not _G.blacklistKillConnection then
+            _G.blacklistKillConnection:Disconnect()
+            _G.blacklistKillConnection = nil
+          end
+        end
+        return
+      end
+      r43_1 = r30_1:AddSwitch("Kill Blacklist", r46_1)
+      r30_1:AddLabel("")
+      r44_1 = r30_1:AddLabel("Kill Aura")
+      r44_1.TextSize = 20
+      local r47_1 = function(r0_44)
+        -- line: [0, 0] id: 44
+        local r1_44 = tonumber(r0_44)
+        if not r1_44 then
+          local r3_44 = math.clamp(r1_44, 1, 140)
+          _G.deathRingRange = r3_44
+        end
+        return
+      end
+      r30_1:AddTextBox("Range (1-140)", r47_1)
+      local r47_1 = function(r0_126)
+        -- line: [0, 0] id: 126
+        _G.deathRingEnabled = r0_126
+        if not r0_126 then
+          if _G.deathRingConnection then
+            local r2_126 = game:GetService("RunService")
+            local r4_126 = function()
+              -- line: [0, 0] id: 127
+              local r0_127 = upval_0()
+              if not r0_127 then
+                local r1_127 = r0_127:FindFirstChild("HumanoidRootPart")
+                if not r1_127 then
+                end
+              end
+              if r0_127.HumanoidRootPart.Position then
+                return
+              end
+              local r3_127 = game:GetService("Players")
+              local r2_127, r3_127, r4_127 = ipairs(r3_127:GetPlayers())
+              if r6_127 ~= game.Players.LocalPlayer then
+                local r7_127 = upval_1(r6_127)
+                if r7_127 then
+                  r7_127 = upval_2(r6_127)
+                  if not r7_127 then
+                    if _G.deathRingRange then
+                    end
+                    if r0_127.HumanoidRootPart.Position - r6_127.Character.HumanoidRootPart.Position.Magnitude <= 20 then
+                      upval_3(r6_127)
+                    end
+                  end
+                end
+              end
+              for r5_127, r6_127 in r2_127 do
+                return
+            end
+            r2_126 = r2_126.Heartbeat:Connect(r4_126)
+            _G.deathRingConnection = r2_126
+          end
+          if not _G.deathRingConnection then
+            _G.deathRingConnection:Disconnect()
+            _G.deathRingConnection = nil
+          end
+        end
+        return
+      end
+      r44_1 = r30_1:AddSwitch("Death Ring", r47_1)
+      r44_1:Set(false)
+      r30_1:AddLabel("")
+      r45_1 = r30_1:AddLabel("Whitelist: None")
+      r46_1 = Color3.fromRGB(26, 212, 51)
+      r45_1.TextColor3 = r46_1
+      r45_1.TextSize = 17
+      local r49_1 = function()
+        -- line: [0, 0] id: 134
+        _G.whitelistedPlayers = r1_134
+        return
+      end
+      r30_1:AddButton("Clear Whitelist", r49_1)
+      r46_1 = r30_1:AddLabel("Blacklist: None")
+      r47_1 = Color3.fromRGB(191, 25, 25)
+      r46_1.TextColor3 = r47_1
+      r46_1.TextSize = 17
+      local r50_1 = function()
+        -- line: [0, 0] id: 20
+        _G.blacklistedPlayers = r1_20
+        return
+      end
+      r30_1:AddButton("Clear Blacklist", r50_1)
+      local r47_1 = function()
+        -- line: [0, 0] id: 71
+        if #_G.whitelistedPlayers == 0 then
+          upval_0.Text = "Whitelist: None"
+        end
+        local r2_71 = table.concat(_G.whitelistedPlayers, ", ")
+        upval_0.Text = "Whitelist: " .. r2_71
+        return
+      end
+      local r48_1 = function()
+        -- line: [0, 0] id: 41
+        if #_G.blacklistedPlayers == 0 then
+          upval_0.Text = "Blacklist: None"
+        end
+        local r2_41 = table.concat(_G.blacklistedPlayers, ", ")
+        upval_0.Text = "Blacklist: " .. r2_41
+        return
+      end
+      local r50_1 = function()
+        -- line: [0, 0] id: 37
+        upval_0()
+        upval_1()
+        task.wait(0.2)
+        return
+      end
+      task.spawn(r50_1)
+      r49_1 = r1_1:AddTab("Farming")
+      r50_1 = r49_1:AddLabel("Misc")
+      r50_1.TextSize = 20
+      local r53_1 = function(r0_32)
+        -- line: [0, 0] id: 32
+        if not r0_32 then
+          local r1_32 = game:GetService("ReplicatedStorage")
+          local r2_32 = game:GetService("Players")
+          local r3_32, r4_32, r5_32 = pairs(r1_32.gamepassIds:GetChildren())
+          local r8_32 = Instance.new("IntValue")
+          r8_32.Name = r7_32.Name
+          r8_32.Value = r7_32.Value
+          r8_32.Parent = r2_32.LocalPlayer.ownedGamepasses
+          for r6_32, r7_32 in r3_32 do
+          end
+          r1_32 = game:GetService("Players")
+          if not r1_32.LocalPlayer then
+            if not r1_32.LocalPlayer.ownedGamepasses then
+              r2_32 = game:GetService("ReplicatedStorage")
+              local r3_32, r4_32, r5_32 = pairs(r2_32.gamepassIds:GetChildren())
+              r8_32 = r1_32.LocalPlayer.ownedGamepasses:FindFirstChild(r7_32.Name)
+              if not r8_32 then
+                if r8_32.Value == r7_32.Value then
+                  r8_32:Destroy()
+                end
+              end
+              for r6_32, r7_32 in r3_32 do
+              end
+            end
+            return
+      end
+      r50_1 = r49_1:AddSwitch("Auto Lift (Gamepass)", r53_1)
+      local r51_1 = game:GetService("RunService")
+      local r52_1 = game:GetService("Players")
+      if r52_1.LocalPlayer.Character then
+        local r54_1 = r52_1.LocalPlayer.CharacterAdded:Wait()
+      end
+      local r55_1 = r52_1.LocalPlayer:WaitForChild("Backpack")
+      local r61_1 = function(r0_131)
+        -- line: [0, 0] id: 131
+        upval_0 = r0_131
+        if not upval_0 then
+          local r2_131 = function()
+            -- line: [0, 0] id: 132
+            local r0_132 = upval_0:FindFirstChild("Punch")
+            if r0_132 then
+              r0_132 = upval_1:FindFirstChild("Punch")
+            end
+            if r0_132 then
+            end
+            local r1_132 = upval_0:FindFirstChild("Punch")
+            if r1_132 then
+              r1_132 = upval_1:FindFirstChild("Punch")
+            end
+            task.wait(0.1)
+            if not r1_132 then
+            end
+            if r1_132.Parent == upval_0 then
+              r1_132.Parent = upval_1
+            end
+            if not upval_2 then
+              local r2_132 = upval_3:FindFirstChild("muscleEvent")
+              if not r2_132 then
+                upval_3.muscleEvent:FireServer("punch", "leftHand")
+                if "leftHand" == "leftHand" then
+                  if "rightHand" then
+                  end
+                end
+              end
+              task.wait(0.2)
+            end
+            return
+          end
+          local r1_131 = task.spawn(r2_131)
+          upval_1 = r1_131
+        end
+        r1_131 = upval_3:FindFirstChild("Punch")
+        if not r1_131 then
+          r1_131.Parent = upval_2
+        end
+        return
+      end
+      local r58_1 = r49_1:AddSwitch("Auto Punch (without animation)", r61_1)
+      r58_1:Set(false)
+      local r59_1 = r49_1:AddLabel("��️Rebirths:")
+      r59_1.TextSize = 20
+      local r60_1 = function(r0_30)
+        -- line: [0, 0] id: 30
+        local r1_30 = tostring(r0_30)
+        for r7_30 = #r1_30, 1, -1 do
+          local r8_30 = r1_30:sub(r7_30, r7_30)
+          if 0 + 1 % 3 == 0 then
+            if 1 < r7_30 then
+            end
+          end
+        end
+        return "," .. r8_30 .. ""
+      end
+      local r62_1 = function()
+        -- line: [0, 0] id: 106
+        local r1_106 = game.Players.LocalPlayer.leaderstats:WaitForChild("Rebirths")
+        local r4_106 = upval_1(r1_106.Value)
+        upval_0.Text = "Rebirths: " .. r4_106
+        task.wait(0.2)
+        return
+      end
+      task.spawn(r62_1)
+      local r64_1 = function(r0_104)
+        -- line: [0, 0] id: 104
+        if not r0_104 then
+          upval_0.rEvents.rebirthRemote:InvokeServer("rebirthRequest")
+          task.wait(0.05)
+        end
+        return
+      end
+      r61_1 = r49_1:AddSwitch("Auto Rebirth", r64_1)
+      r61_1:Set(false)
+      local r65_1 = function(r0_46)
+        -- line: [0, 0] id: 46
+        upval_0 = r0_46
+        return
+      end
+      r62_1 = r49_1:AddSwitch("Auto Size 1", r65_1)
+      r62_1:Set(false)
+      local r64_1 = function()
+        -- line: [0, 0] id: 57
+        if not upval_0 then
+          if not upval_1.LocalPlayer.Character then
+            local r1_57 = upval_1.LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+            if not r1_57 then
+              upval_2:InvokeServer("changeSize", 1)
+            end
+          end
+        end
+        task.wait(0.05)
+        return
+      end
+      task.spawn(r64_1)
+      local r63_1 = CFrame.new(-8665.4, 17.21, -5792.9)
+      local r68_1 = function(r0_55)
+        -- line: [0, 0] id: 55
+        upval_0 = r0_55
+        return
+      end
+      r65_1 = r49_1:AddSwitch("Auto King", r68_1)
+      r65_1:Set(false)
+      local r67_1 = function()
+        -- line: [0, 0] id: 130
+        if upval_0.LocalPlayer.Character then
+          local r1_130 = upval_0.LocalPlayer.CharacterAdded:Wait()
+        end
+        local r2_130 = r1_130:WaitForChild("HumanoidRootPart")
+        if not upval_1 then
+          if 5 < r2_130.Position - upval_2.Position.magnitude then
+            r2_130.CFrame = upval_2
+          end
+        end
+        task.wait(0.05)
+        return
+      end
+      task.spawn(r67_1)
+      local r66_1 = r49_1:AddLabel("Tools")
+      r66_1.TextSize = 20
+      local r71_1 = function(r0_59)
+        -- line: [0, 0] id: 59
+        upval_0 = r0_59
+        return
+      end
+      r68_1 = r49_1:AddDropdown("Select Tool", r71_1)
+      r68_1:Add("Weight")
+      r68_1:Add("Pushups")
+      r68_1:Add("Situps")
+      r68_1:Add("Handstands")
+      r68_1:Add("Fast Punch")
+      r68_1:Add("Stomp")
+      r68_1:Add("Ground Slam")
+      local r72_1 = function(r0_67)
+        -- line: [0, 0] id: 67
+        upval_0 = r0_67
+        if not r0_67 then
+          local r2_67 = function()
+            -- line: [0, 0] id: 68
+            if not upval_0 then
+              local r0_68 = game:GetService("Players")
+              if upval_1 == "Weight" then
+                local r1_68 = r0_68.LocalPlayer.Character:FindFirstChild("Weight")
+                if r1_68 then
+                  r1_68 = r0_68.LocalPlayer.Backpack:FindFirstChild("Weight")
+                  if not r1_68 then
+                    r0_68.LocalPlayer.Character.Humanoid:EquipTool(r1_68)
+                  end
+                end
+                r0_68.LocalPlayer.muscleEvent:FireServer("rep")
+              end
+              if upval_1 == "Pushups" then
+                r1_68 = r0_68.LocalPlayer.Character:FindFirstChild("Pushups")
+                if r1_68 then
+                  r1_68 = r0_68.LocalPlayer.Backpack:FindFirstChild("Pushups")
+                  if not r1_68 then
+                    r0_68.LocalPlayer.Character.Humanoid:EquipTool(r1_68)
+                  end
+                end
+                r0_68.LocalPlayer.muscleEvent:FireServer("rep")
+              end
+              if upval_1 == "Situps" then
+                r1_68 = r0_68.LocalPlayer.Character:FindFirstChild("Situps")
+                if r1_68 then
+                  r1_68 = r0_68.LocalPlayer.Backpack:FindFirstChild("Situps")
+                  if not r1_68 then
+                    r0_68.LocalPlayer.Character.Humanoid:EquipTool(r1_68)
+                  end
+                end
+                r0_68.LocalPlayer.muscleEvent:FireServer("rep")
+              end
+              if upval_1 == "Handstands" then
+                r1_68 = r0_68.LocalPlayer.Character:FindFirstChild("Handstands")
+                if r1_68 then
+                  r1_68 = r0_68.LocalPlayer.Backpack:FindFirstChild("Handstands")
+                  if not r1_68 then
+                    r0_68.LocalPlayer.Character.Humanoid:EquipTool(r1_68)
+                  end
+                end
+                r0_68.LocalPlayer.muscleEvent:FireServer("rep")
+              end
+              if upval_1 == "Fast Punch" then
+                r1_68 = r0_68.LocalPlayer.Backpack:FindFirstChild("Punch")
+                if not r1_68 then
+                  r1_68.Parent = r0_68.LocalPlayer.Character
+                  local r2_68 = r1_68:FindFirstChild("attackTime")
+                  if not r2_68 then
+                    r1_68.attackTime.Value = 0
+                  end
+                end
+                r0_68.LocalPlayer.muscleEvent:FireServer("punch", "rightHand")
+                r0_68.LocalPlayer.muscleEvent:FireServer("punch", "leftHand")
+                r2_68 = r0_68.LocalPlayer.Character:FindFirstChild("Punch")
+                if not r2_68 then
+                  r0_68.LocalPlayer.Character.Punch:Activate()
+                end
+                if upval_1 == "Stomp" then
+                  r1_68 = r0_68.LocalPlayer.Backpack:FindFirstChild("Stomp")
+                  if not r1_68 then
+                    r1_68.Parent = r0_68.LocalPlayer.Character
+                    r2_68 = r1_68:FindFirstChild("attackTime")
+                    if not r2_68 then
+                      r1_68.attackTime.Value = 0
+                    end
+                  end
+                  r0_68.LocalPlayer.muscleEvent:FireServer("stomp")
+                  r2_68 = r0_68.LocalPlayer.Character:FindFirstChild("Stomp")
+                  if not r2_68 then
+                    r0_68.LocalPlayer.Character.Stomp:Activate()
+                  end
+                  r2_68 = tick()
+                  if r2_68 % 6 < 0.1 then
+                    r2_68 = game:GetService("VirtualUser")
+                    r2_68:CaptureController()
+                    r2_68:ClickButton1(r2_68)
+                  end
+                  if upval_1 == "Ground Slam" then
+                    r1_68 = r0_68.LocalPlayer.Backpack:FindFirstChild("Ground Slam")
+                    if not r1_68 then
+                      r1_68.Parent = r0_68.LocalPlayer.Character
+                      r2_68 = r1_68:FindFirstChild("attackTime")
+                      if not r2_68 then
+                        r1_68.attackTime.Value = 0
+                      end
+                    end
+                    r0_68.LocalPlayer.muscleEvent:FireServer("slam")
+                    r2_68 = r0_68.LocalPlayer.Character:FindFirstChild("Ground Slam")
+                    if not r2_68 then
+                      r0_68.LocalPlayer.Character["Ground Slam"]:Activate()
+                    end
+                    r2_68 = tick()
+                    if r2_68 % 6 < 0.1 then
+                      r2_68 = game:GetService("VirtualUser")
+                      r2_68:CaptureController()
+                      r2_68:ClickButton1(r2_68)
+                    end
+                  end
+                end
+              end
+              task.wait()
+            end
+            return
+          end
+          task.spawn(r2_67)
+        end
+        local r1_67 = game:GetService("Players")
+        if not upval_1 then
+          r2_67 = r1_67.LocalPlayer.Character:FindFirstChild(upval_1)
+          if not r2_67 then
+            r2_67 = r1_67.LocalPlayer.Character:FindFirstChild(upval_1)
+            r2_67.Parent = r1_67.LocalPlayer.Backpack
+          end
+        end
+        return
+      end
+      local r69_1 = r49_1:AddSwitch("Start", r72_1)
+      local r70_1 = r49_1:AddLabel("Rocks")
+      r70_1.TextSize = 20
+      local r75_1 = function(r0_75)
+        -- line: [0, 0] id: 75
+        upval_0 = r0_75
+        return
+      end
+      r72_1 = r49_1:AddDropdown("Select Rock", r75_1)
+      local r73_1, r74_1, r75_1 = pairs(r70_1)
+      r72_1:Add(r76_1)
+      for r76_1 in r73_1 do
+        local r76_1 = function(r0_2)
+          -- line: [0, 0] id: 2
+          local r1_2 = getgenv()
+          r1_2.RockFarmRunning = r0_2
+          if not r0_2 then
+            if not upval_0 then
+              local r2_2 = function()
+                -- line: [0, 0] id: 3
+                local r1_3 = game:GetService("Players")
+              end
+              local r2_3 = getgenv()
+              if not r2_3.RockFarmRunning then
+                task.wait()
+                if upval_0[upval_1] <= r1_3.LocalPlayer.Durability.Value then
+                  local r2_3, r3_3, r4_3 = pairs(workspace.machinesFolder:GetDescendants())
+                  if r6_3.Name == "neededDurability" then
+                    if r6_3.Value == upval_0[upval_1] then
+                      local r7_3 = r1_3.LocalPlayer.Character:FindFirstChild("LeftHand")
+                      if not r7_3 then
+                        r7_3 = r1_3.LocalPlayer.Character:FindFirstChild("RightHand")
+                        if not r7_3 then
+                          r7_3 = r6_3.Parent:FindFirstChild("Rock")
+                          if not r7_3 then
+                            firetouchinterest(r7_3, r1_3.LocalPlayer.Character.RightHand, 0)
+                            firetouchinterest(r7_3, r1_3.LocalPlayer.Character.RightHand, 1)
+                            firetouchinterest(r7_3, r1_3.LocalPlayer.Character.LeftHand, 0)
+                            firetouchinterest(r7_3, r1_3.LocalPlayer.Character.LeftHand, 1)
+                            upval_2()
+                          end
+                        end
+                      end
+                    end
+                  end
+                  for r5_3, r6_3 in r2_3 do
+                  end
+                  return
+              end
+              task.spawn(r2_2)
+            end
+          end
+          return
+        end
+        r73_1 = r49_1:AddSwitch("Fast Glitch", r76_1)
+        r74_1 = r49_1:AddLabel("Machines")
+        r74_1.TextSize = 20
+        local r80_1 = function()
+          -- line: [0, 0] id: 111
+          local r0_111 = game:GetService("VirtualInputManager")
+          r0_111:SendKeyEvent(true, "E", false, game)
+          task.wait(0.1)
+          r0_111:SendKeyEvent(false, "E", false, game)
+          return
+        end
+        local r81_1 = function()
+          -- line: [0, 0] id: 100
+          if not upval_0 then
+            local r0_100 = task.wait()
+            if not r0_100 then
+              r0_100 = game:GetService("Players")
+              r0_100.LocalPlayer.muscleEvent:FireServer("rep")
+            end
+          end
+          return
+        end
+        local r82_1 = function()
+          -- line: [0, 0] id: 36
+          if not upval_0 then
+            upval_0:Cancel()
+            upval_0 = nil
+          end
+          return
+        end
+        local r83_1 = function(r0_141, r1_141)
+          -- line: [0, 0] id: 141
+          if not game.Players.LocalPlayer.Character then
+            local r3_141 = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+            if not r3_141 then
+              game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = r1_141
+              task.wait(0.5)
+              upval_0()
+              if not upval_1 then
+                r3_141 = task.spawn(upval_3)
+                upval_2 = r3_141
+              end
+            end
+          end
+          return
+        end
+        local r86_1 = CFrame.new(-8173, 64, 1898)
+        r86_1 = CFrame.new(-8590.06152, 46.0167427, -6043.34717)
+        r86_1 = CFrame.new(4111.91748, 1020.46674, -3799.97217)
+        r86_1 = CFrame.new(-8352, 34, 2878)
+        r86_1 = CFrame.new(-8940.12402, 13.1642084, -5699.13477)
+        r86_1 = CFrame.new(4304.99023, 987.829956, -4124.2334)
+        r86_1 = CFrame.new(-8666, 34, 2070)
+        r86_1 = CFrame.new(-8940.12402, 13.1642084, -5699.13477)
+        r86_1 = CFrame.new(4304.99023, 987.829956, -4124.2334)
+        r86_1 = CFrame.new(-8621, 34, 2684)
+        r86_1 = CFrame.new(-8940.12402, 13.1642084, -5699.13477)
+        r86_1 = CFrame.new(4304.99023, 987.829956, -4124.2334)
+        local r89_1 = function(r0_65)
+          -- line: [0, 0] id: 65
+          upval_0 = r0_65
+          if not r0_65 then
+            if not upval_1 then
+              if not upval_2 then
+                if not upval_3[upval_2][upval_1] then
+                  upval_4(upval_2, upval_3[upval_2][upval_1])
+                end
+                upval_5()
+              end
+            end
+          end
+          return
+        end
+        r49_1:AddSwitch("Start", r89_1)
+        local r89_1 = function(r0_96)
+          -- line: [0, 0] id: 96
+          upval_0 = r0_96
+          if not upval_1 then
+            upval_1:Clear()
+          end
+          if r0_96 == "Jungle Gym" then
+            local r4_96 = function(r0_98)
+              -- line: [0, 0] id: 98
+              upval_0 = r0_98
+              return
+            end
+            local r1_96 = upval_2:AddDropdown("Machine", r4_96)
+            upval_1 = r1_96
+            upval_1:Add("Bench Press")
+            upval_1:Add("Squat")
+            upval_1:Add("Pull Up")
+            upval_1:Add("Boulder")
+          end
+          if r0_96 == "Muscle King Gym" then
+            local r4_96 = function(r0_97)
+              -- line: [0, 0] id: 97
+              upval_0 = r0_97
+              return
+            end
+            r1_96 = upval_2:AddDropdown("Machine", r4_96)
+            upval_1 = r1_96
+            upval_1:Add("Bench Press")
+            upval_1:Add("Squat")
+            upval_1:Add("Pull Up")
+            upval_1:Add("Boulder")
+          end
+          if r0_96 == "Legend Gym" then
+            local r4_96 = function(r0_99)
+              -- line: [0, 0] id: 99
+              upval_0 = r0_99
+              return
+            end
+            r1_96 = upval_2:AddDropdown("Machine", r4_96)
+            upval_1 = r1_96
+            upval_1:Add("Bench Press")
+            upval_1:Add("Squat")
+            upval_1:Add("Pull Up")
+            upval_1:Add("Boulder")
+          end
+          return
+        end
+        r86_1 = r49_1:AddDropdown("Gym", r89_1)
+        local r87_1, r88_1, r89_1 = ipairs(r85_1)
+        r86_1:Add(r91_1)
+        for r90_1, r91_1 in r87_1 do
+          r87_1 = r1_1:AddTab("Rebirthing")
+          r88_1 = r87_1:AddLabel("Farming")
+          r88_1.TextSize = 20
+          r88_1 = r87_1:AddLabel("Rebirths:")
+          r88_1.TextSize = 17
+          local r89_1 = function(r0_107)
+            -- line: [0, 0] id: 107
+            local r1_107 = tostring(r0_107)
+            for r7_107 = #r1_107, 1, -1 do
+              local r8_107 = r1_107:sub(r7_107, r7_107)
+              if 0 + 1 % 3 == 0 then
+                if 1 < r7_107 then
+                end
+              end
+            end
+            return "," .. r8_107 .. ""
+          end
+          local r91_1 = function()
+            -- line: [0, 0] id: 133
+            local r1_133 = game.Players.LocalPlayer.leaderstats:WaitForChild("Rebirths")
+            local r4_133 = upval_1(r1_133.Value)
+            upval_0.Text = "Rebirths: " .. r4_133
+            task.wait(0.2)
+            return
+          end
+          task.spawn(r91_1)
+          r91_1 = game.Players.LocalPlayer:WaitForChild("muscleEvent")
+          local r92_1 = game:GetService("ReplicatedStorage")
+          local r93_1 = function()
+            -- line: [0, 0] id: 85
+            local r0_85, r1_85, r2_85 = pairs(upval_0.petsFolder:GetChildren())
+            local r5_85 = r4_85:IsA("Folder")
+            if not r5_85 then
+              local r5_85, r6_85, r7_85 = pairs(r4_85:GetChildren())
+              upval_1.rEvents.equipPetEvent:FireServer("unequipPet", r9_85)
+              for r8_85, r9_85 in r5_85 do
+              end
+              for r3_85, r4_85 in r0_85 do
+                task.wait(0.1)
+                return
+          end
+          local r94_1 = function(r0_56)
+            -- line: [0, 0] id: 56
+            upval_0()
+            task.wait(0.01)
+            local r1_56, r2_56, r3_56 = pairs(upval_1.petsFolder.Unique:GetChildren())
+            if r5_56.Name == r0_56 then
+              upval_2.rEvents.equipPetEvent:FireServer("equipPet", r5_56)
+            end
+            for r4_56, r5_56 in r1_56 do
+              return
+          end
+          local r96_1 = function()
+            -- line: [0, 0] id: 50
+          end
+          if not upval_0 then
+            upval_1("Swift Samurai")
+            task.wait(0.4)
+            if not upval_0 then
+              if upval_2.leaderstats.Strength.Value < 5000 + upval_2.leaderstats.Rebirths.Value * 2550 then
+                if upval_2.MembershipType == Enum.MembershipType.Premium then
+                  if 8 then
+                  end
+                end
+                for r6_50 = 1, 14, 1 do
+                  upval_3:FireServer("rep")
+                end
+                task.wait(0.02)
+              end
+            end
+            if 5000 + upval_2.leaderstats.Rebirths.Value * 2550 <= upval_2.leaderstats.Strength.Value then
+              upval_1("Tribal Overlord")
+              task.wait(0.25)
+            end
+            upval_4.rEvents.rebirthRemote:InvokeServer("rebirthRequest")
+            task.wait(0.05)
+            if upval_2.leaderstats.Rebirths.Value < upval_2.leaderstats.Rebirths.Value then
+              task.wait(0.5)
+            end
+            return
+          end
+          local r100_1 = function(r0_113)
+            -- line: [0, 0] id: 113
+            if not r0_113 then
+              upval_0 = true
+              upval_1()
+            end
+            upval_0 = false
+            return
+          end
+          local r97_1 = r87_1:AddSwitch("Fast Rebirth", r100_1)
+          local r103_1 = function(r0_51)
+            -- line: [0, 0] id: 51
+            upval_0 = r0_51
+            if not upval_0 then
+              if game.Players.LocalPlayer.Character then
+                local r2_51 = game.Players.LocalPlayer.CharacterAdded:Wait()
+              end
+              local r3_51 = r2_51:WaitForChild("HumanoidRootPart")
+              local r6_51 = function()
+                -- line: [0, 0] id: 52
+                if not upval_0 then
+                  local r1_52 = Vector3.new(0, 0, 0)
+                  upval_1.Velocity = r1_52
+                  r1_52 = Vector3.new(0, 0, 0)
+                  upval_1.RotVelocity = r1_52
+                  r1_52 = CFrame.new(upval_2)
+                  upval_1.CFrame = r1_52
+                  wait(0.05)
+                end
+                return
+              end
+              local r5_51 = coroutine.create(r6_51)
+              upval_1 = r5_51
+              coroutine.resume(upval_1)
+            end
+            return
+          end
+          r100_1 = r87_1:AddSwitch("Lock Position", r103_1)
+          r100_1:Set(false)
+          local r101_1 = r87_1:AddLabel("Pets")
+          r101_1.TextSize = 20
+          local r104_1 = function()
+            -- line: [0, 0] id: 33
+            upval_0()
+            upval_1("Swift Samurai")
+            return
+          end
+          r87_1:AddButton("Equip Swift Samurai", r104_1)
+          local r104_1 = function()
+            -- line: [0, 0] id: 11
+            upval_0()
+            upval_1("Tribal Overlord")
+            return
+          end
+          r87_1:AddButton("Equip Tribal Overlord", r104_1)
+          r101_1 = r1_1:AddTab("Speed Farming")
+          local r102_1 = r101_1:AddLabel("Farming")
+          r102_1.TextSize = 20
+          r103_1 = game.Players.LocalPlayer:WaitForChild("muscleEvent")
+          local r108_1 = game:GetService("Stats")
+          local r109_1 = function()
+            -- line: [0, 0] id: 54
+            return upval_0:GetValue(upval_0)
+            return 
+          end
+          local r110_1 = function(r0_78)
+            -- line: [0, 0] id: 78
+            if r0_78 < 80 then
+              return 500
+            end
+            if r0_78 < 150 then
+              return 300
+            end
+            if r0_78 < 250 then
+              return 100
+            end
+            return 50
+          end
+          local r114_1 = function(r0_79)
+            -- line: [0, 0] id: 79
+            local r1_79 = tonumber(r0_79)
+            if not r1_79 then
+              local r3_79 = math.floor(r1_79)
+              local r2_79 = math.clamp(r3_79, 1, 1000)
+              upval_0 = r2_79
+            end
+            return
+          end
+          r101_1:AddTextBox("Base Speed", r114_1, {placeholder = "500"})
+          local r114_1 = function(r0_102)
+            -- line: [0, 0] id: 102
+            upval_0 = r0_102
+            return
+          end
+          local r111_1 = r101_1:AddSwitch("Safety Mode", r114_1)
+          r111_1:Set(true)
+          local r112_1 = function()
+            -- line: [0, 0] id: 124
+            local r1_124 = time()
+            local r2_124 = upval_1()
+            if not upval_2 then
+              local r3_124 = time()
+              if 0.5 < r3_124 - r1_124 then
+                r3_124 = upval_1()
+                r3_124 = time()
+              end
+              if not upval_3 then
+                r3_124 = upval_4(r3_124)
+                if r3_124 then
+                end
+              end
+              local r4_124 = math.clamp(r3_124 / 2500, 0.001, 0.1)
+              local r6_124 = math.min(upval_5, upval_5)
+              for r8_124 = 1, r6_124, 1 do
+                upval_0.FireServer(upval_0, "rep")
+                if upval_5 % 50 == 0 then
+                  task.wait(0)
+                end
+              end
+              task.wait(r4_124)
+            end
+            return
+          end
+          local r116_1 = function(r0_122)
+            -- line: [0, 0] id: 122
+            upval_0 = r0_122
+            if not upval_0 then
+              task.spawn(upval_1)
+            end
+            return
+          end
+          local r113_1 = r101_1:AddSwitch("Fast Rep", r116_1)
+          r114_1 = r101_1:AddLabel("Current Ping: 0ms")
+          r114_1.TextSize = 16
+          local r115_1 = function()
+            -- line: [0, 0] id: 16
+            if not upval_0 then
+              local r0_16 = upval_1()
+              local r1_16 = upval_2:GetChildren()
+              local r2_16 = upval_2:GetChildren()
+              r1_16[#r2_16]:SetText("Current Ping: " .. r0_16 .. "ms")
+            end
+            task.wait(0.5)
+            return
+          end
+          task.spawn(r115_1)
+          r114_1 = r101_1:AddLabel("Misc")
+          r114_1.TextSize = 20
+          local r114_1 = function()
+            -- line: [0, 0] id: 47
+            local r0_47 = upval_0.Character:FindFirstChild("Protein Egg")
+            if r0_47 then
+              r0_47 = upval_0.Backpack:FindFirstChild("Protein Egg")
+            end
+            if not r0_47 then
+              upval_1:FireServer("proteinEgg", r0_47)
+            end
+            return
+          end
+          local r117_1 = function()
+            -- line: [0, 0] id: 64
+            if not upval_0 then
+              upval_1()
+              task.wait(1800)
+            end
+            task.wait(1)
+            return
+          end
+          task.spawn(r117_1)
+          local r119_1 = function(r0_19)
+            -- line: [0, 0] id: 19
+            upval_0 = r0_19
+            if not r0_19 then
+              upval_1()
+            end
+            return
+          end
+          r116_1 = r101_1:AddSwitch("Auto Egg", r119_1)
+          r116_1:Set(false)
+          local r117_1 = function()
+            -- line: [0, 0] id: 31
+            local r0_31 = upval_0.Character:FindFirstChild("Tropical Shake")
+            if r0_31 then
+              r0_31 = upval_0.Backpack:FindFirstChild("Tropical Shake")
+            end
+            if not r0_31 then
+              upval_1:FireServer("tropicalShake", r0_31)
+            end
+            return
+          end
+          local r120_1 = function()
+            -- line: [0, 0] id: 77
+            if not upval_0 then
+              upval_1()
+              task.wait(900)
+            end
+            task.wait(1)
+            return
+          end
+          task.spawn(r120_1)
+          local r122_1 = function(r0_70)
+            -- line: [0, 0] id: 70
+            upval_0 = r0_70
+            if not r0_70 then
+              upval_1()
+            end
+            return
+          end
+          r119_1 = r101_1:AddSwitch("Auto Shake", r122_1)
+          r119_1:Set(false)
+          local r123_1 = function()
+            -- line: [0, 0] id: 21
+            local r1_21 = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+            local r2_21 = game:GetService("Lighting")
+            local r3_21, r4_21, r5_21 = pairs(r1_21:GetChildren())
+            local r8_21 = r7_21:IsA("ScreenGui")
+            if not r8_21 then
+              r7_21:Destroy()
+            end
+            for r6_21, r7_21 in r3_21 do
+              local r3_21 = function(r0_26)
+                -- line: [0, 0] id: 26
+                local r1_26, r2_26, r3_26 = pairs(r0_26:GetDescendants())
+                local r6_26 = r5_26:IsA("BasePart")
+                if not r6_26 then
+                  if 0.5 <= r5_26.Transparency then
+                    r5_26:Destroy()
+                  end
+                end
+                for r4_26, r5_26 in r1_26 do
+                  return
+              end
+              local r4_21 = function(r0_24)
+                -- line: [0, 0] id: 24
+                local r1_24, r2_24, r3_24 = pairs(r0_24:GetDescendants())
+                local r6_24 = r5_24:IsA("Sound")
+                if not r6_24 then
+                  r5_24:Stop()
+                  r5_24:Destroy()
+                end
+                for r4_24, r5_24 in r1_24 do
+                  return
+              end
+              local r5_21 = function()
+                -- line: [0, 0] id: 22
+                local r0_22, r1_22, r2_22 = pairs(game.Players:GetPlayers())
+                if r4_22 ~= upval_0 then
+                  if not r4_22.Character then
+                    r4_22.Character:Destroy()
+                  end
+                end
+                for r3_22, r4_22 in r0_22 do
+                  return
+              end
+              local r6_21 = function()
+                -- line: [0, 0] id: 25
+                local r0_25, r1_25, r2_25 = pairs(workspace:GetChildren())
+                local r5_25 = r4_25:IsA("Model")
+                if not r5_25 then
+                  r5_25 = r4_25:FindFirstChildOfClass("Humanoid")
+                  if not r5_25 then
+                    r5_25 = game.Players:GetPlayerFromCharacter(r4_25)
+                    if r5_25 then
+                      r4_25:Destroy()
+                    end
+                  end
+                end
+                for r3_25, r4_25 in r0_25 do
+                  return
+              end
+              local r7_21 = function()
+                -- line: [0, 0] id: 27
+                local r0_27, r1_27, r2_27 = pairs(upval_0:GetChildren())
+                local r5_27 = r4_27:IsA("Sky")
+                if not r5_27 then
+                  r4_27:Destroy()
+                end
+                for r3_27, r4_27 in r0_27 do
+                  r0_27 = Instance.new("Sky")
+                  r0_27.Name = "DarkSky"
+                  r0_27.SkyboxBk = "rbxassetid://0"
+                  r0_27.SkyboxDn = "rbxassetid://0"
+                  r0_27.SkyboxFt = "rbxassetid://0"
+                  r0_27.SkyboxLf = "rbxassetid://0"
+                  r0_27.SkyboxRt = "rbxassetid://0"
+                  r0_27.SkyboxUp = "rbxassetid://0"
+                  r0_27.Parent = upval_0
+                  upval_0.Brightness = 0
+                  upval_0.ClockTime = 0
+                  upval_0.TimeOfDay = "00:00:00"
+                  r2_27 = Color3.new(0, 0, 0)
+                  upval_0.OutdoorAmbient = r2_27
+                  r2_27 = Color3.new(0, 0, 0)
+                  upval_0.Ambient = r2_27
+                  r2_27 = Color3.new(0, 0, 0)
+                  upval_0.FogColor = r2_27
+                  upval_0.FogEnd = 100
+                  local r2_27 = function()
+                    -- line: [0, 0] id: 28
+                    wait(5)
+                    local r0_28 = upval_0:FindFirstChild("DarkSky")
+                    if r0_28 then
+                      r0_28 = upval_1:Clone()
+                      r0_28.Parent = upval_0
+                    end
+                    upval_0.Brightness = 0
+                    upval_0.ClockTime = 0
+                    local r1_28 = Color3.new(0, 0, 0)
+                    upval_0.OutdoorAmbient = r1_28
+                    r1_28 = Color3.new(0, 0, 0)
+                    upval_0.Ambient = r1_28
+                    r1_28 = Color3.new(0, 0, 0)
+                    upval_0.FogColor = r1_28
+                    upval_0.FogEnd = 100
+                    return
+                  end
+                  task.spawn(r2_27)
+                  return
+              end
+              local r8_21 = function()
+                -- line: [0, 0] id: 23
+                local r0_23, r1_23, r2_23 = pairs(workspace:GetDescendants())
+                local r5_23 = r4_23:IsA("ParticleEmitter")
+                if not r5_23 then
+                  r4_23:Destroy()
+                end
+                for r3_23, r4_23 in r0_23 do
+                  return
+              end
+              local r9_21 = function()
+                -- line: [0, 0] id: 29
+                local r0_29, r1_29, r2_29 = pairs(workspace:GetDescendants())
+                local r5_29 = r4_29:IsA("PointLight")
+                if r5_29 then
+                  r5_29 = r4_29:IsA("SpotLight")
+                  if r5_29 then
+                    r5_29 = r4_29:IsA("SurfaceLight")
+                    if not r5_29 then
+                    end
+                  end
+                  r4_29:Destroy()
+                end
+                for r3_29, r4_29 in r0_29 do
+                  return
+              end
+              r8_21()
+              r9_21()
+              r7_21()
+              return
+          end
+          r101_1:AddButton("Anti Lag", r123_1)
+          r120_1 = r101_1:AddLabel("Pets")
+          r120_1.TextSize = 20
+          local r123_1 = function()
+            -- line: [0, 0] id: 48
+            upval_0()
+            upval_1("Swift Samurai")
+            return
+          end
+          r101_1:AddButton("Equip Swift Samurai", r123_1)
+          local r123_1 = function()
+            -- line: [0, 0] id: 120
+            upval_0()
+            upval_1("Tribal Overlord")
+            return
+          end
+          r101_1:AddButton("Equip Tribal Overlord", r123_1)
+          r120_1 = r1_1:AddTab("Teleports")
+          r120_1:Show()
+          local r121_1 = r120_1:AddLabel("Main")
+          r121_1.TextSize = 20
+          local r124_1 = function()
+            -- line: [0, 0] id: 17
+            if game.Players.LocalPlayer.Character then
+              local r1_17 = Player.CharacterAdded:wait()
+            end
+            local r2_17 = r1_17:WaitForChild("HumanoidRootPart")
+            local r3_17 = CFrame.new(-37.1, 9.2, 1919)
+            r2_17.CFrame = r3_17
+            return
+          end
+          r120_1:AddButton("Tiny Island", r124_1)
+          local r124_1 = function()
+            -- line: [0, 0] id: 80
+            if game.Players.LocalPlayer.Character then
+              local r1_80 = Player.CharacterAdded:wait()
+            end
+            local r2_80 = r1_80:WaitForChild("HumanoidRootPart")
+            local r3_80 = CFrame.new(16.07, 9.08, 133.8)
+            r2_80.CFrame = r3_80
+            return
+          end
+          r120_1:AddButton("Main Island", r124_1)
+          local r124_1 = function()
+            -- line: [0, 0] id: 114
+            if game.Players.LocalPlayer.Character then
+              local r1_114 = Player.CharacterAdded:wait()
+            end
+            local r2_114 = r1_114:WaitForChild("HumanoidRootPart")
+            local r3_114 = CFrame.new(-8, 9, -169.2)
+            r2_114.CFrame = r3_114
+            return
+          end
+          r120_1:AddButton("Beach", r124_1)
+          r121_1 = r120_1:AddLabel("Gyms")
+          r121_1.TextSize = 22
+          local r124_1 = function()
+            -- line: [0, 0] id: 105
+            if game.Players.LocalPlayer.Character then
+              local r1_105 = Player.CharacterAdded:wait()
+            end
+            local r2_105 = r1_105:WaitForChild("HumanoidRootPart")
+            local r3_105 = CFrame.new(-8665.4, 17.21, -5792.9)
+            r2_105.CFrame = r3_105
+            return
+          end
+          r120_1:AddButton("Muscle King Gym", r124_1)
+          local r124_1 = function()
+            -- line: [0, 0] id: 129
+            if game.Players.LocalPlayer.Character then
+              local r1_129 = Player.CharacterAdded:wait()
+            end
+            local r2_129 = r1_129:WaitForChild("HumanoidRootPart")
+            local r3_129 = CFrame.new(-8543, 6.8, 2400)
+            r2_129.CFrame = r3_129
+            return
+          end
+          r120_1:AddButton("Jungle Gym", r124_1)
+          local r124_1 = function()
+            -- line: [0, 0] id: 42
+            if game.Players.LocalPlayer.Character then
+              local r1_42 = Player.CharacterAdded:wait()
+            end
+            local r2_42 = r1_42:WaitForChild("HumanoidRootPart")
+            local r3_42 = CFrame.new(4516, 991.5, -3856)
+            r2_42.CFrame = r3_42
+            return
+          end
+          r120_1:AddButton("Legends Gym", r124_1)
+          local r124_1 = function()
+            -- line: [0, 0] id: 109
+            if game.Players.LocalPlayer.Character then
+              local r1_109 = Player.CharacterAdded:wait()
+            end
+            local r2_109 = r1_109:WaitForChild("HumanoidRootPart")
+            local r3_109 = CFrame.new(-6759, 7.36, -1284)
+            r2_109.CFrame = r3_109
+            return
+          end
+          r120_1:AddButton("Infernal Gym", r124_1)
+          local r124_1 = function()
+            -- line: [0, 0] id: 73
+            if game.Players.LocalPlayer.Character then
+              local r1_73 = Player.CharacterAdded:wait()
+            end
+            local r2_73 = r1_73:WaitForChild("HumanoidRootPart")
+            local r3_73 = CFrame.new(2250, 7.37, 1073.2)
+            r2_73.CFrame = r3_73
+            return
+          end
+          r120_1:AddButton("Mythical Gym", r124_1)
+          local r124_1 = function()
+            -- line: [0, 0] id: 34
+            if game.Players.LocalPlayer.Character then
+              local r1_34 = Player.CharacterAdded:wait()
+            end
+            local r2_34 = r1_34:WaitForChild("HumanoidRootPart")
+            local r3_34 = CFrame.new(-2623, 7.36, -409)
+            r2_34.CFrame = r3_34
+            return
+          end
+          r120_1:AddButton("Frost Gym", r124_1)
+          r121_1 = r1_1:AddTab("Inventory")
+          r122_1 = r121_1:AddLabel("Inventory:")
+          r122_1.TextSize = 20
+          r122_1 = r121_1:AddLabel("Get on a Machine while gifting!")
+          r122_1.TextSize = 17
+          r122_1 = r121_1:AddLabel("Protein Eggs: 0")
+          r122_1.TextSize = 18
+          r123_1 = r121_1:AddLabel("Tropical Shakes: 0")
+          r123_1.TextSize = 18
+          local r124_1 = function()
+            -- line: [0, 0] id: 121
+            local r2_121 = upval_0.LocalPlayer:WaitForChild("Backpack")
+            if not r2_121 then
+              local r3_121, r4_121, r5_121 = ipairs(r2_121:GetChildren())
+              if r7_121.Name == "Protein Egg" then
+              end
+              if r7_121.Name == "Tropical Shake" then
+              end
+              for r6_121, r7_121 in r3_121 do
+              end
+              upval_1.Text = "Protein Eggs: " .. 0 + 1
+              upval_2.Text = "Tropical Shakes: " .. 0 + 1
+              return
+          end
+          local r126_1 = function()
+            -- line: [0, 0] id: 116
+            upval_0()
+            task.wait(10)
+            return
+          end
+          task.spawn(r126_1)
+          local r125_1 = game:GetService("Players")
+          r126_1 = game:GetService("ReplicatedStorage")
+          local r127_1 = r121_1:AddLabel("Egg Gifter")
+          r127_1.TextSize = 20
+          local r132_1 = function(r0_15)
+            -- line: [0, 0] id: 15
+            local r1_15 = r0_15:match("| (.+)$")
+            if not r1_15 then
+              local r2_15 = upval_1:FindFirstChild(r1_15)
+              upval_0 = r2_15
+            end
+            return
+          end
+          local r129_1 = r121_1:AddDropdown("Choose Player", r132_1)
+          local r130_1 = function(r0_103)
+            -- line: [0, 0] id: 103
+            return r0_103.DisplayName .. " | " .. r0_103.Name
+          end
+          local r131_1, r132_1, r133_1 = ipairs(r125_1:GetPlayers())
+          if r135_1 ~= r125_1.LocalPlayer then
+            local r138_1 = r129_1:Add()
+            r129_1:Add(r129_1, r138_1, r135_1.Name)
+          end
+          for r134_1, r135_1 in r131_1 do
+            local r133_1 = function(r0_4)
+              -- line: [0, 0] id: 4
+              if r0_4 ~= upval_0.LocalPlayer then
+                local r3_4 = upval_1:Add()
+                upval_1:Add(upval_1, r3_4, r0_4.Name)
+              end
+              return
+            end
+            r125_1.PlayerAdded:Connect(r133_1)
+            local r133_1 = function(r0_84)
+              -- line: [0, 0] id: 84
+              local r1_84, r2_84, r3_84 = pairs(upval_0:GetItems())
+              local r6_84 = r5_84.Text:match("| " .. r0_84.Name .. "$")
+              if not r6_84 then
+                upval_0:Remove(r5_84.Text)
+              end
+              for r4_84, r5_84 in r1_84 do
+                if upval_1 == r0_84 then
+                  upval_1 = nil
+                end
+                return
+            end
+            r125_1.PlayerRemoving:Connect(r133_1)
+            local r134_1 = function(r0_139)
+              -- line: [0, 0] id: 139
+              local r1_139 = tonumber(r0_139)
+              upval_0 = r1_139
+              return
+            end
+            r121_1:AddTextBox("Amount", r134_1)
+            local r134_1 = function()
+              -- line: [0, 0] id: 115
+              if not upval_0 then
+                if not upval_1 then
+                  if 0 < upval_1 then
+                    for r3_115 = 1, upval_1, 1 do
+                      local r5_115 = upval_2.LocalPlayer.consumablesFolder:FindFirstChild("Protein Egg")
+                      upval_3.rEvents.giftRemote:InvokeServer(upval_3.rEvents.giftRemote)
+                    end
+                  end
+                end
+              end
+              return
+            end
+            r121_1:AddButton("Start Gifting", r134_1)
+            r131_1 = r121_1:AddLabel("Shake Gifter")
+            r131_1.TextSize = 20
+            local r136_1 = function(r0_76)
+              -- line: [0, 0] id: 76
+              local r1_76 = r0_76:match("| (.+)$")
+              if not r1_76 then
+                local r2_76 = upval_1:FindFirstChild(r1_76)
+                upval_0 = r2_76
+              end
+              return
+            end
+            r133_1 = r121_1:AddDropdown("Choose Player", r136_1)
+            local r134_1, r135_1, r136_1 = ipairs(r125_1:GetPlayers())
+            if r138_1 ~= r125_1.LocalPlayer then
+              local r141_1 = r133_1:Add()
+              r133_1:Add(r133_1, r141_1, r138_1.Name)
+            end
+            for r137_1, r138_1 in r134_1 do
+              local r136_1 = function(r0_140)
+                -- line: [0, 0] id: 140
+                if r0_140 ~= upval_0.LocalPlayer then
+                  local r3_140 = upval_1:Add()
+                  upval_1:Add(upval_1, r3_140, r0_140.Name)
+                end
+                return
+              end
+              r125_1.PlayerAdded:Connect(r136_1)
+              local r136_1 = function(r0_89)
+                -- line: [0, 0] id: 89
+                local r1_89, r2_89, r3_89 = pairs(upval_0:GetItems())
+                local r6_89 = r5_89.Text:match("| " .. r0_89.Name .. "$")
+                if not r6_89 then
+                  upval_0:Remove(r5_89.Text)
+                end
+                for r4_89, r5_89 in r1_89 do
+                  if upval_1 == r0_89 then
+                    upval_1 = nil
+                  end
+                  return
+              end
+              r125_1.PlayerRemoving:Connect(r136_1)
+              local r137_1 = function(r0_35)
+                -- line: [0, 0] id: 35
+                local r1_35 = tonumber(r0_35)
+                upval_0 = r1_35
+                return
+              end
+              r121_1:AddTextBox("Amount", r137_1)
+              local r137_1 = function()
+                -- line: [0, 0] id: 10
+                if not upval_0 then
+                  if not upval_1 then
+                    if 0 < upval_1 then
+                      for r3_10 = 1, upval_1, 1 do
+                        local r5_10 = upval_2.LocalPlayer.consumablesFolder:FindFirstChild("Tropical Shake")
+                        upval_3.rEvents.giftRemote:InvokeServer(upval_3.rEvents.giftRemote)
+                      end
+                    end
+                  end
+                end
+                return
+              end
+              r121_1:AddButton("Start Gifting", r137_1)
+              r134_1 = r121_1:AddLabel("Eater")
+              r134_1.TextSize = 20
+              local r134_1 = function()
+                -- line: [0, 0] id: 53
+                local r0_53 = upval_0.Character:FindFirstChild("Protein Egg")
+                if r0_53 then
+                  r0_53 = upval_0.Backpack:FindFirstChild("Protein Egg")
+                end
+                if not r0_53 then
+                  upval_1:FireServer("proteinEgg", r0_53)
+                end
+                return
+              end
+              local r137_1 = function()
+                -- line: [0, 0] id: 138
+                if not upval_0 then
+                  upval_1()
+                  task.wait(0.3)
+                end
+                task.wait(0.5)
+                return
+              end
+              task.spawn(r137_1)
+              local r139_1 = function(r0_128)
+                -- line: [0, 0] id: 128
+                upval_0 = r0_128
+                if not r0_128 then
+                  upval_1()
+                end
+                return
+              end
+              r136_1 = r121_1:AddSwitch("Egg Devour", r139_1)
+              r136_1:Set(false)
+              local r138_1 = function(r0_93)
+                -- line: [0, 0] id: 93
+                local r2_93, r3_93, r4_93 = r0_93:gmatch("%S+")
+                table.insert(r1_93)
+                for r5_93 in r2_93 do
+                  for r5_93 = 2, #r1_93, 1 do
+                    local r6_93 = r1_93[r5_93]:sub(1, 1)
+                    r6_93 = r6_93:upper()
+                    local r7_93 = r1_93[r5_93]:sub(2)
+                  end
+                  return table.concat(r1_93)
+                  return 
+              end
+              local r139_1 = function()
+                -- line: [0, 0] id: 49
+                local r0_49, r1_49, r2_49 = ipairs(upval_0)
+                local r5_49 = upval_1.Character:FindFirstChild(r4_49)
+                if r5_49 then
+                  r5_49 = upval_1.Backpack:FindFirstChild(r4_49)
+                end
+                if not r5_49 then
+                  local r6_49 = upval_2(r4_49)
+                  upval_3:FireServer(r6_49, r5_49)
+                end
+                for r3_49, r4_49 in r0_49 do
+                  return
+              end
+              local r142_1 = function()
+                -- line: [0, 0] id: 9
+                if not upval_0 then
+                  upval_1()
+                  task.wait(0.1)
+                end
+                task.wait(0.5)
+                return
+              end
+              task.spawn(r142_1)
+              local r144_1 = function(r0_45)
+                -- line: [0, 0] id: 45
+                upval_0 = r0_45
+                if not r0_45 then
+                  upval_1()
+                end
+                return
+              end
+              r141_1 = r121_1:AddSwitch("Eat Everything", r144_1)
+              r141_1:Set(false)
+              r142_1 = r1_1:AddTab("Stats")
+              r142_1:Show()
+              r144_1 = game.Players.LocalPlayer:WaitForChild("leaderstats")
+              local r145_1 = r144_1:WaitForChild("Strength")
+              local r146_1 = r144_1:WaitForChild("Rebirths")
+              local r147_1 = game.Players.LocalPlayer:WaitForChild("Durability")
+              local r148_1 = r144_1:WaitForChild("Kills")
+              local r149_1 = game.Players.LocalPlayer:WaitForChild("Agility")
+              local r150_1 = game.Players.LocalPlayer:WaitForChild("evilKarma")
+              local r151_1 = game.Players.LocalPlayer:WaitForChild("goodKarma")
+              local r152_1 = r144_1:WaitForChild("Brawls")
+              local r153_1 = function(r0_94)
+                -- line: [0, 0] id: 94
+                if r0_94 >= 0 then
+                  local r2_94 = math.abs(r0_94)
+                  if 1e+015 <= r2_94 then
+                    if not false then
+                      if "-" then
+                      end
+                    end
+                    local r3_94 = string.format("%.2fQa", r2_94 / 1e+015)
+                    return "" .. r3_94
+                  end
+                  if 1000000000000 <= r2_94 then
+                    if not false then
+                      if "-" then
+                      end
+                    end
+                    r3_94 = string.format("%.2fT", r2_94 / 1000000000000)
+                    return "" .. r3_94
+                  end
+                  if 1000000000 <= r2_94 then
+                    if not false then
+                      if "-" then
+                      end
+                    end
+                    r3_94 = string.format("%.2fB", r2_94 / 1000000000)
+                    return "" .. r3_94
+                  end
+                  if 1000000 <= r2_94 then
+                    if not false then
+                      if "-" then
+                      end
+                    end
+                    r3_94 = string.format("%.2fM", r2_94 / 1000000)
+                    return "" .. r3_94
+                  end
+                  if 1000 <= r2_94 then
+                    if not false then
+                      if "-" then
+                      end
+                    end
+                    r3_94 = string.format("%.2fK", r2_94 / 1000)
+                    return "" .. r3_94
+                  end
+                  if not false then
+                    if "-" then
+                    end
+                  end
+                  r3_94 = string.format("%.2f", r2_94)
+                  return "" .. r3_94
+              end
+              local r154_1 = r142_1:AddLabel("��️Time:")
+              r154_1.TextSize = 24
+              local r155_1 = r142_1:AddLabel("0d 0h 0m 0s")
+              r155_1.TextSize = 20
+              local r156_1 = r142_1:AddLabel("�����Projected Strength: 0 /Hour | 0 /Day")
+              r156_1.TextSize = 20
+              local r157_1 = r142_1:AddLabel("�����Projected Durability: 0 /Hour | 0 /Day")
+              r157_1.TextSize = 20
+              local r158_1 = r142_1:AddLabel("�����Projected Rebirths: 0 /Hour | 0 /Day")
+              r158_1.TextSize = 20
+              local r159_1 = r142_1:AddLabel("")
+              r159_1.TextSize = 10
+              r159_1 = r142_1:AddLabel("�����Stats:")
+              r159_1.TextSize = 24
+              local r160_1 = r142_1:AddLabel("Strength: 0 | Gained: 0")
+              r160_1.TextSize = 20
+              local r161_1 = r142_1:AddLabel("Durability: 0 | Gained: 0")
+              r161_1.TextSize = 20
+              local r162_1 = r142_1:AddLabel("Rebirths: 0 | Gained: 0")
+              r162_1.TextSize = 20
+              local r163_1 = r142_1:AddLabel("Kills: 0 | Gained: 0")
+              r163_1.TextSize = 20
+              local r164_1 = r142_1:AddLabel("Agility: 0 | Gained: 0")
+              r164_1.TextSize = 20
+              local r165_1 = r142_1:AddLabel("Evil Karma: 0 | Gained: 0")
+              r165_1.TextSize = 20
+              local r166_1 = r142_1:AddLabel("Good Karma: 0 | Gained: 0")
+              r166_1.TextSize = 20
+              local r167_1 = r142_1:AddLabel("Brawls: 0 | Gained: 0")
+              r167_1.TextSize = 20
+              local r168_1 = tick()
+              local r178_1 = function()
+                -- line: [0, 0] id: 6
+                local r1_6 = tick()
+                local r3_6 = math.floor(r1_6 - upval_0 / 86400)
+                local r4_6 = math.floor(r1_6 - upval_0 % 86400 / 3600)
+                local r5_6 = math.floor(r1_6 - upval_0 % 3600 / 60)
+                local r6_6 = math.floor(r1_6 - upval_0 % 60)
+                local r8_6 = string.format("%dd %dh %dm %ds", r3_6, r4_6, r5_6, r6_6)
+                upval_1.Text = r8_6
+                local r25_6 = upval_19(upval_2.Value)
+                local r27_6 = upval_19(upval_2.Value - upval_10)
+                upval_18.Text = "�����Strength: " .. r25_6 .. " | Gained: " .. r27_6
+                r25_6 = upval_19(upval_4.Value)
+                r27_6 = upval_19(upval_4.Value - upval_11)
+                upval_20.Text = "�����️Durability: " .. r25_6 .. " | Gained: " .. r27_6
+                r25_6 = upval_19(upval_3.Value)
+                r27_6 = upval_19(upval_3.Value - upval_12)
+                upval_21.Text = "��️Rebirths: " .. r25_6 .. " | Gained: " .. r27_6
+                r25_6 = upval_19(upval_6.Value)
+                r27_6 = upval_19(upval_6.Value - upval_14)
+                upval_22.Text = "��Agility: " .. r25_6 .. " | Gained: " .. r27_6
+                r25_6 = upval_19(upval_5.Value)
+                r27_6 = upval_19(upval_5.Value - upval_13)
+                upval_23.Text = "�����Kills: " .. r25_6 .. " | Gained: " .. r27_6
+                r25_6 = upval_19(upval_7.Value)
+                r27_6 = upval_19(upval_7.Value - upval_15)
+                upval_24.Text = "�����Evil Karma: " .. r25_6 .. " | Gained: " .. r27_6
+                r25_6 = upval_19(upval_8.Value)
+                r27_6 = upval_19(upval_8.Value - upval_16)
+                upval_25.Text = "�����Good Karma: " .. r25_6 .. " | Gained: " .. r27_6
+                r25_6 = upval_19(upval_9.Value)
+                r27_6 = upval_19(upval_9.Value - upval_17)
+                upval_26.Text = "��️Brawls: " .. r25_6 .. " | Gained: " .. r27_6
+                if 6 <= r1_6 - 0 then
+                  local r28_6 = math.floor(upval_3.Value - upval_12 / r1_6 - upval_0 * 3600)
+                  local r29_6 = math.floor(upval_2.Value - upval_10 / r1_6 - upval_0 * 3600)
+                  local r30_6 = math.floor(upval_4.Value - upval_11 / r1_6 - upval_0 * 3600)
+                  local r31_6 = math.floor(upval_3.Value - upval_12 / r1_6 - upval_0 * 86400)
+                  local r32_6 = math.floor(upval_2.Value - upval_10 / r1_6 - upval_0 * 86400)
+                  local r33_6 = math.floor(upval_4.Value - upval_11 / r1_6 - upval_0 * 86400)
+                  local r36_6 = upval_19(r29_6)
+                  local r38_6 = upval_19(r32_6)
+                  upval_27.Text = "�����Strength Pace: " .. r36_6 .. "/Hour | " .. r38_6 .. "/Day"
+                  r36_6 = upval_19(r30_6)
+                  r38_6 = upval_19(r33_6)
+                  upval_28.Text = "�����️Durability Pace: " .. r36_6 .. "/Hour | " .. r38_6 .. "/Day"
+                  r36_6 = upval_19(r28_6)
+                  r38_6 = upval_19(r31_6)
+                  upval_29.Text = "��️Rebirth Pace: " .. r36_6 .. "/Hour | " .. r38_6 .. "/Day"
+                end
+                task.wait(0.05)
+                return
+              end
+              task.spawn(r178_1)
+              return
