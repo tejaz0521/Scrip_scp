@@ -23,7 +23,7 @@ local whitelist = {
     ["ilopo124"] = true,
     ["KKSHIPAPI"] = true,
     ["chuy82992"] = true,
-    ["Pro2_Team"] = true,
+    ["mohaopxd2"] = true,
     [""] = true,
     [""] = true,
     [""] = true, 
@@ -52,8 +52,8 @@ end
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/rafael25ic-blip/phoenix-cracked/refs/heads/main/Pheonix%20Private%20Librerya"))()
 
 -- VENTANA PRINCIPAL
-local window = library:AddWindow("⚠️ Toxic PAID V2 | By Rafael | Cracked By iblameaabis ⚠️", {
-    main_color = Color3.fromRGB(34, 56, 34), 
+local window = library:AddWindow("⚠️ PRIVATE SCRIPT | By Tejaz |  ⚠️", {
+    main_color = Color3.fromRGB(0, 0, 0), 
     min_size = Vector2.new(600, 820),
     can_resize = false,
 })
