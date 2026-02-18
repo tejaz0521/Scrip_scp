@@ -5,7 +5,7 @@ local r0_1 = loadstring(game:HttpGet("https://raw.githubusercontent.com/memejame
 r0_1 = r0_1()
 local r5_1 = r0_1:AddWindow(2, 252)
 r5_1 = Vector2.new(600, 600)
-local r1_1 = r0_1:AddWindow(r0_1, "Canes Priv Script������", {main_color = r5_1, min_size = r5_1, can_resize = false})
+local r1_1 = r0_1:AddWindow(r0_1, "KYS || MLG", {main_color = r5_1, min_size = r5_1, can_resize = false})
 local r2_1 = game:GetService("ReplicatedStorage")
 local r4_1, r5_1, r6_1 = ipairs(r3_1)
 local r9_1 = r2_1:FindFirstChild(252)
@@ -2173,3 +2173,4 @@ for r7_1, r8_1 in r4_1 do
               end
               task.spawn(r178_1)
               return
+
