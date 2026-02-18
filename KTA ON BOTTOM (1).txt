@@ -2106,3 +2106,26 @@ task.spawn(function()
         task.wait(0.25)
     end
 end)
+
+local autoFastStrength = false
+
+AddSwitch("Ultimate Fast Strength",false,nil,function(state)
+    autoFastStrength = state
+    getgenv().isGrinding = state
+
+    if not state then return end
+
+    task.spawn(function()
+        while autoFastStrength do
+            
+            for batch = 1, 5 do
+                for i = 1, 60 do
+                    
+                    game:GetService("Players").LocalPlayer.muscleEvent:FireServer("rep")
+                end
+                
+                task.wait(0.1) batches × 0.2s = 1 second
+            end
+        end
+    end)
+end)
