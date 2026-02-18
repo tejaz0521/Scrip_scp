@@ -4676,8 +4676,8 @@ Gift:AddButton(
 
 local Credits = window:AddTab("Credits")
 
-Credits:AddLabel("Toxic Paid V2")
-Credits:AddLabel("Script Hecho por: Rafael")
-Credits:AddLabel("Tiktok:DeathKiller")
-Credits:AddLabel("MVX ON TOP 🔥")
-Credits:AddLabel("JASSON MI VIEJA")
+Credits:AddLabel("PRIVATE SCRIPT")
+Credits:AddLabel("UR DADDY : TEJAZ")
+Credits:AddLabel("Youtube:scp_tejaz")
+Credits:AddLabel("SCPxMLG ON TOP 🔥")
+Credits:AddLabel("KYS UR MY SON")
