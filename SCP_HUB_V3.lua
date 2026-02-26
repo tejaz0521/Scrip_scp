@@ -25,7 +25,7 @@ ScreenGui.Parent = PlayerGui
 
 local Frame = Instance.new("Frame")
 Frame.Size = UDim2.new(1, 0, 1, 0)
-Frame.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Frame.BackgroundTransparency = 0.3
 Frame.BorderSizePixel = 0
 Frame.Parent = ScreenGui
@@ -33,17 +33,17 @@ Frame.Parent = ScreenGui
 local Box = Instance.new("Frame")
 Box.Size = UDim2.new(0, 400, 0, 220)
 Box.Position = UDim2.new(0.5, -200, 0.5, -110)
-Box.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+Box.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Box.BorderSizePixel = 0
 Box.Parent = ScreenGui
 Instance.new("UICorner", Box).CornerRadius = UDim.new(0, 10)
 
 local Title = Instance.new("TextLabel")
 Title.Size = UDim2.new(1, 0, 0, 45)
-Title.BackgroundColor3 = Color3.fromRGB(139, 0, 0)
+Title.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Title.BorderSizePixel = 0
 Title.Text = "🔑 SCP HUB - KEY SYSTEM"
-Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextColor3 = Color3.fromRGB(0, 0, 0)
 Title.TextSize = 17
 Title.Font = Enum.Font.GothamBold
 Title.Parent = Box
@@ -53,8 +53,8 @@ local Sub = Instance.new("TextLabel")
 Sub.Size = UDim2.new(1, 0, 0, 30)
 Sub.Position = UDim2.new(0, 0, 0, 50)
 Sub.BackgroundTransparency = 1
-Sub.Text = "Join discord.gg/nDSy4jdVDc to get your key!"
-Sub.TextColor3 = Color3.fromRGB(200, 200, 200)
+Sub.Text = "Join discord.gg/nDSy4jdVDc CLICK ON THIS TEXT TO GET KEY"
+Sub.TextColor3 = Color3.fromRGB(0, 0, 0)
 Sub.TextSize = 13
 Sub.Font = Enum.Font.Gotham
 Sub.Parent = Box
@@ -62,12 +62,12 @@ Sub.Parent = Box
 local Input = Instance.new("TextBox")
 Input.Size = UDim2.new(0, 340, 0, 40)
 Input.Position = UDim2.new(0.5, -170, 0, 95)
-Input.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Input.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Input.BorderSizePixel = 0
 Input.PlaceholderText = "Enter your key here..."
-Input.PlaceholderColor3 = Color3.fromRGB(120, 120, 120)
+Input.PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
 Input.Text = ""
-Input.TextColor3 = Color3.fromRGB(255, 255, 255)
+Input.TextColor3 = Color3.fromRGB(0, 0, 0)
 Input.TextSize = 14
 Input.Font = Enum.Font.Gotham
 Input.ClearTextOnFocus = false
@@ -79,7 +79,7 @@ Status.Size = UDim2.new(1, 0, 0, 25)
 Status.Position = UDim2.new(0, 0, 0, 145)
 Status.BackgroundTransparency = 1
 Status.Text = ""
-Status.TextColor3 = Color3.fromRGB(255, 80, 80)
+Status.TextColor3 = Color3.fromRGB(0, 00, 00)
 Status.TextSize = 13
 Status.Font = Enum.Font.Gotham
 Status.Parent = Box
@@ -87,10 +87,10 @@ Status.Parent = Box
 local Button = Instance.new("TextButton")
 Button.Size = UDim2.new(0, 340, 0, 38)
 Button.Position = UDim2.new(0.5, -170, 0, 170)
-Button.BackgroundColor3 = Color3.fromRGB(139, 0, 0)
+Button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Button.BorderSizePixel = 0
 Button.Text = "✅ SUBMIT KEY"
-Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+Button.TextColor3 = Color3.fromRGB(0, 0, 0)
 Button.TextSize = 15
 Button.Font = Enum.Font.GothamBold
 Button.Parent = Box
@@ -138,13 +138,13 @@ end
 
 Button.MouseButton1Click:Connect(function()
     local entered = Input.Text
-    Status.TextColor3 = Color3.fromRGB(255, 200, 0)
+    Status.TextColor3 = Color3.fromRGB(0, 0, 0)
     Status.Text = "⏳ Checking key..."
     Button.Active = false
 
     task.spawn(function()
         if checkKey(entered) then
-            Status.TextColor3 = Color3.fromRGB(0, 255, 100)
+            Status.TextColor3 = Color3.fromRGB(0, 0, 0)
             Status.Text = "✅ Key accepted! Loading script..."
             task.wait(1.5)
             ScreenGui:Destroy()
@@ -154,7 +154,7 @@ Button.MouseButton1Click:Connect(function()
             -- ══════════════════════════════════════
 
             local v1 = loadstring(game:HttpGet("https://raw.githubusercontent.com/Moha-space/elerium-v2-ui-library/refs/heads/main/Library", true))():AddWindow("                                   SCP MUSCLE LEGENDS | PUBLIC ", {
-                main_color = Color3.fromRGB(139, 0, 0),
+                main_color = Color3.fromRGB(0, 0, 0),
                 min_size = Vector2.new(615, 685),
                 can_resize = false,
                 scrollable = true
@@ -189,7 +189,6 @@ Button.MouseButton1Click:Connect(function()
             local vu172 = game:GetService("Players")
             local vu173 = vu172.LocalPlayer
             infoTab1 = v1:AddTab(" STATS ")
-            infoTab1:AddLabel("▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐")
             infoTab1:AddLabel("【 STATS 】   ").TextSize = 20
             local vu5 = infoTab1:AddLabel("Time Spent in Server: 0d 0h 0m 0s")
             local vu6 = os.time()
@@ -220,7 +219,7 @@ Button.MouseButton1Click:Connect(function()
                     vu18()
                 end
             end)
-            infoTab1:AddLabel("▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐")
+                
             infoTab1:AddLabel("PLAYER STATS").TextSize = 20
             infoTab1:AddLabel(" GAINED ").TextSize = 20
             local vu19 = {
@@ -268,7 +267,7 @@ Button.MouseButton1Click:Connect(function()
                     end
                 end
             end)()
-            infoTab1:AddLabel("▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐")
+            
             infoTab1:AddLabel(" CURRENT STATS ").TextSize = 20
             local function vu44(p43)
                 if p43 >= 1000000000000000 then return tostring(math.floor(p43 * 10 / 1000000000000000) / 10) .. "Qa"
@@ -381,7 +380,7 @@ Button.MouseButton1Click:Connect(function()
                 end
             end, { clear = false, placeholder = "Type username or display name..." })
             infoTab1:AddLabel("EX  username -mohaop just type mo / display name - ZX_BLA BLA just type ZX")
-            infoTab1:AddLabel("▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐▐")
+            
             vu121 = game.Players.LocalPlayer
             vu109(vu121)
             vu120(vu121)
@@ -560,7 +559,7 @@ Button.MouseButton1Click:Connect(function()
 
             -- REBIRTH TAB
             rebirthTab = v1:AddTab("REBIRTH")
-            rebirthTab:AddLabel("▐▐▐▐▐▐ AUTO KING ▐▐▐▐▐▐")
+            rebirthTab:AddLabel("AUTO KING ")
             local vu174 = false
             rebirthTab:AddSwitch("Auto King ", function(p175)
                 vu174 = p175
@@ -582,7 +581,7 @@ Button.MouseButton1Click:Connect(function()
                     getgenv().kingLockConnection = nil
                 end
             end)
-            rebirthTab:AddLabel("▐▐▐▐▐▐REBIRTH FUNCTIONS▐▐▐▐▐▐")
+            rebirthTab:AddLabel("REBIRTH FUNCTIONS")
             local vu180 = false
             local vu181 = nil
             rebirthTab:AddTextBox("Target Rebirth Amount", function(p182)
@@ -606,7 +605,7 @@ Button.MouseButton1Click:Connect(function()
                     end)()
                 end
             end)
-            rebirthTab:AddLabel("▐▐▐▐▐▐ AUTO WEIGHT ▐▐▐▐▐▐")
+            rebirthTab:AddLabel(" AUTO WEIGHT ")
             rebirthTab:AddSwitch("AUTO WEIGHT", function(p186)
                 isAutoStrength = p186
                 local v187 = game.Players.LocalPlayer
@@ -622,7 +621,7 @@ Button.MouseButton1Click:Connect(function()
                     if v190 and v190.Name == "Weight" then v190.Parent = v188 end
                 end
             end):Set(false)
-            rebirthTab:AddLabel("▐▐▐▐▐▐ AUTO SIZE 2 ▐▐▐▐▐▐")
+            rebirthTab:AddLabel(" AUTO SIZE 2 ")
             local vu191 = nil
             rebirthTab:AddSwitch("Auto Size 2", function(p192)
                 if p192 then
@@ -635,13 +634,13 @@ Button.MouseButton1Click:Connect(function()
                     if vu191 then task.cancel(vu191); vu191 = nil end
                 end
             end)
-            rebirthTab:AddLabel("▐▐▐▐▐▐ HIDE FRAMES ▐▐▐▐▐▐")
+            rebirthTab:AddLabel(" HIDE FRAMES ")
             rebirthTab:AddSwitch("Hide All Frames", function(p193)
                 for _, v198 in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
                     if v198.Name:match("Frame$") then v198.Visible = not p193 end
                 end
             end)
-            rebirthTab:AddLabel("▐▐▐▐▐▐ LOCK POSITION ▐▐▐▐▐▐")
+            rebirthTab:AddLabel(" LOCK POSITION ")
             rebirthTab:AddSwitch("Lock Position", function(p199)
                 if p199 then
                     local vu200 = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
@@ -681,7 +680,7 @@ Button.MouseButton1Click:Connect(function()
             end
             local v227 = v1:AddTab("KILLS")
             v227:Show()
-            v227:AddLabel("▐▐▐▐▐▐ KILL FUNCTION ▐▐▐▐▐▐")
+            v227:AddLabel(" KILL FUNCTION ")
             v227:AddSwitch("Anti Knockback", function(p228)
                 if p228 then
                     local v230 = game.Workspace:FindFirstChild(game.Players.LocalPlayer.Name):FindFirstChild("HumanoidRootPart")
@@ -764,7 +763,7 @@ Button.MouseButton1Click:Connect(function()
                     elseif v272 and v272:FindFirstChild("attackTime") then v272.attackTime.Value = 0.35 end
                 end
             end):Set(false)
-            v227:AddLabel("▐▐▐▐▐▐ KILL SINGLE PLAYER ▐▐▐▐▐▐")
+            v227:AddLabel(" KILL SINGLE PLAYER ")
             local vu273 = ""
             v227:AddTextBox("Player Username or Display Name", function(p274)
                 vu273 = p274
@@ -805,7 +804,7 @@ Button.MouseButton1Click:Connect(function()
                     end)
                 end
             end)
-            v227:AddLabel("▐▐▐▐▐▐ SPY PLAYER ▐▐▐▐▐▐")
+            v227:AddLabel(" SPY PLAYER ")
             local vu284 = ""
             local vu285 = false
             local vu286 = nil
@@ -903,7 +902,7 @@ Button.MouseButton1Click:Connect(function()
                     end
                 end
             end
-            rocksTab:AddLabel("▐▐▐▐▐▐ LOCK POSITION ▐▐▐▐▐▐")
+            rocksTab:AddLabel(" LOCK POSITION ")
             rocksTab:AddSwitch("Lock Position", function(p324)
                 if p324 then
                     local vu325 = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
@@ -917,7 +916,7 @@ Button.MouseButton1Click:Connect(function()
                     getgenv().posLock = nil
                 end
             end)
-            rocksTab:AddLabel("▐▐▐▐▐▐ The Rocks [ MAKE SURE U HAVE THE REQUIRED DURABILITY] ▐▐▐▐▐▐")
+            rocksTab:AddLabel(" The Rocks [ MAKE SURE U HAVE THE REQUIRED DURABILITY] ")
             local rockList = {
                 {"Jungle Rock", 10000000},
                 {"Muscle King Rock", 5000000},
@@ -959,7 +958,7 @@ Button.MouseButton1Click:Connect(function()
 
             -- TELEPORT TAB
             teleportTab = v1:AddTab("TELEPORT")
-            teleportTab:AddLabel("▐▐▐▐▐▐ Teleport ▐▐▐▐▐▐")
+            teleportTab:AddLabel(" Teleport ")
             local vu346 = {
                 BEACH = Vector3.new(0, 0, 0),
                 ["FROST GYM"] = Vector3.new(-2650, 7, -393),
@@ -980,7 +979,7 @@ Button.MouseButton1Click:Connect(function()
                 if v350 and v349 then v349.CFrame = CFrame.new(v350) end
             end)
             for k, _ in pairs(vu346) do v351:Add(k) end
-            teleportTab:AddLabel("▐▐▐▐▐▐ Pets ▐▐▐▐▐▐")
+            teleportTab:AddLabel(" Pets ")
             local vu356 = game:GetService("ReplicatedStorage")
             local vu357 = "Neon Guardian"
             local v359 = teleportTab:AddDropdown("Select Pet", function(p358)
@@ -1000,7 +999,7 @@ Button.MouseButton1Click:Connect(function()
                     end)
                 end
             end)
-            teleportTab:AddLabel("▐▐▐▐▐▐ AURAS ▐▐▐▐▐▐")
+            teleportTab:AddLabel(" AURAS ")
             local vu362 = "Blue Aura"
             local v364 = teleportTab:AddDropdown("Select Aura", function(p363)
                 vu362 = p363
@@ -1019,7 +1018,7 @@ Button.MouseButton1Click:Connect(function()
                     end)
                 end
             end)
-            teleportTab:AddLabel("▐▐▐▐▐▐ SPIN WHEEL ▐▐▐▐▐▐")
+            teleportTab:AddLabel(" SPIN WHEEL ")
             teleportTab:AddSwitch("Auto Spin Wheel", function(p367)
                 _G.AutoSpinWheel = p367
                 if p367 then
@@ -1033,7 +1032,7 @@ Button.MouseButton1Click:Connect(function()
 
             -- SETTINGS TAB
             settingsTab = v1:AddTab("SETTINGS")
-            settingsTab:AddLabel("▐▐▐▐▐▐ GRAPHICS ▐▐▐▐▐▐")
+            settingsTab:AddLabel(" GRAPHICS ")
             settingsTab:AddSwitch("Low Graphics", function(p368)
                 if p368 then
                     game.Lighting.GlobalShadows = false
@@ -1057,7 +1056,7 @@ Button.MouseButton1Click:Connect(function()
                     end
                 end
             end)
-            settingsTab:AddLabel("▐▐▐▐▐▐ GAMEPASS / AD PORTAL ▐▐▐▐▐▐")
+            settingsTab:AddLabel(" GAMEPASS / AD PORTAL ")
             settingsTab:AddButton("Free AutoLift Gamepass", function()
                 local v377 = game:GetService("ReplicatedStorage").gamepassIds
                 local v378 = game:GetService("Players").LocalPlayer
@@ -1082,7 +1081,7 @@ Button.MouseButton1Click:Connect(function()
                     Duration = 3
                 })
             end)
-            settingsTab:AddLabel("▐▐▐▐▐▐ ANTI AFK ▐▐▐▐▐▐")
+            settingsTab:AddLabel(" ANTI AFK ")
             settingsTab:AddButton("Enable Anti-AFK", function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/hassanxzayn-lua/Anti-afk/main/antiafkbyhassanxzyn"))()
             end)
@@ -1092,7 +1091,7 @@ Button.MouseButton1Click:Connect(function()
             settingsTab:AddButton("Enable Anti-AFK v2 by moha", function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/Moha-space/SPACE-HUB-/refs/heads/main/New%20anti%20afk%20v2"))()
             end)
-            settingsTab:AddLabel("▐▐▐▐▐▐ WALK ON WATER ▐▐▐▐▐▐")
+            settingsTab:AddLabel(" WALK ON WATER ")
             local vu389 = {}
             local vu390 = 2048
             local vu391 = Vector3.new(-2, -9.5, -2)
@@ -1125,7 +1124,7 @@ Button.MouseButton1Click:Connect(function()
             settingsTab:AddSwitch("Walk on Water", function(p406)
                 if p406 then vu400() else vu405() end
             end)
-            settingsTab:AddLabel("▐▐▐▐▐▐ CHANGE TIME ▐▐▐▐▐▐")
+            settingsTab:AddLabel(" CHANGE TIME ")
             local v409 = settingsTab:AddDropdown("Change Time", function(p407)
                 local v408 = game:GetService("Lighting")
                 if p407 == "Night" then
