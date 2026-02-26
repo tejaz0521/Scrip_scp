@@ -23,22 +23,144 @@ task.spawn(function()
 end)
 v2:AddLabel("\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144")
 v2:AddLabel(" \226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144 INVITE LINK \226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144")
--- Auto-copy Discord link when script loads + notify user
-task.spawn(function()
-    task.wait(2) -- wait for GUI to fully load
-    setclipboard("https://discord.gg/nDSy4jdVDc")
-    -- Show notification if your UI library supports it
+local VALID_KEYS = {
+    "SCPONTOP",
+}
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
+
+-- Create ScreenGui
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "KeySystem"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.Parent = PlayerGui
+
+-- Background blur/dark overlay
+local Frame = Instance.new("Frame")
+Frame.Size = UDim2.new(1, 0, 1, 0)
+Frame.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+Frame.BackgroundTransparency = 0.3
+Frame.BorderSizePixel = 0
+Frame.Parent = ScreenGui
+
+-- Main box
+local Box = Instance.new("Frame")
+Box.Size = UDim2.new(0, 400, 0, 220)
+Box.Position = UDim2.new(0.5, -200, 0.5, -110)
+Box.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+Box.BorderSizePixel = 0
+Box.Parent = ScreenGui
+
+local Corner = Instance.new("UICorner")
+Corner.CornerRadius = UDim.new(0, 10)
+Corner.Parent = Box
+
+-- Title
+local Title = Instance.new("TextLabel")
+Title.Size = UDim2.new(1, 0, 0, 45)
+Title.Position = UDim2.new(0, 0, 0, 0)
+Title.BackgroundColor3 = Color3.fromRGB(139, 0, 0)
+Title.BorderSizePixel = 0
+Title.Text = "🔑 SCP HUB - KEY SYSTEM"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 17
+Title.Font = Enum.Font.GothamBold
+Title.Parent = Box
+
+local TitleCorner = Instance.new("UICorner")
+TitleCorner.CornerRadius = UDim.new(0, 10)
+TitleCorner.Parent = Title
+
+-- Subtitle
+local Sub = Instance.new("TextLabel")
+Sub.Size = UDim2.new(1, 0, 0, 30)
+Sub.Position = UDim2.new(0, 0, 0, 50)
+Sub.BackgroundTransparency = 1
+Sub.Text = "Join discord.gg/nDSy4jdVDc to get your key!"
+Sub.TextColor3 = Color3.fromRGB(200, 200, 200)
+Sub.TextSize = 13
+Sub.Font = Enum.Font.Gotham
+Sub.Parent = Box
+
+-- Text input
+local Input = Instance.new("TextBox")
+Input.Size = UDim2.new(0, 340, 0, 40)
+Input.Position = UDim2.new(0.5, -170, 0, 95)
+Input.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+Input.BorderSizePixel = 0
+Input.PlaceholderText = "Enter your key here..."
+Input.PlaceholderColor3 = Color3.fromRGB(120, 120, 120)
+Input.Text = ""
+Input.TextColor3 = Color3.fromRGB(255, 255, 255)
+Input.TextSize = 14
+Input.Font = Enum.Font.Gotham
+Input.ClearTextOnFocus = false
+Input.Parent = Box
+
+local InputCorner = Instance.new("UICorner")
+InputCorner.CornerRadius = UDim.new(0, 6)
+InputCorner.Parent = Input
+
+-- Status label
+local Status = Instance.new("TextLabel")
+Status.Size = UDim2.new(1, 0, 0, 25)
+Status.Position = UDim2.new(0, 0, 0, 145)
+Status.BackgroundTransparency = 1
+Status.Text = ""
+Status.TextColor3 = Color3.fromRGB(255, 80, 80)
+Status.TextSize = 13
+Status.Font = Enum.Font.Gotham
+Status.Parent = Box
+
+-- Submit button
+local Button = Instance.new("TextButton")
+Button.Size = UDim2.new(0, 340, 0, 38)
+Button.Position = UDim2.new(0.5, -170, 0, 170)
+Button.BackgroundColor3 = Color3.fromRGB(139, 0, 0)
+Button.BorderSizePixel = 0
+Button.Text = "✅ SUBMIT KEY"
+Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+Button.TextSize = 15
+Button.Font = Enum.Font.GothamBold
+Button.Parent = Box
+
+local BtnCorner = Instance.new("UICorner")
+BtnCorner.CornerRadius = UDim.new(0, 6)
+BtnCorner.Parent = Button
+
+-- KEY CHECK LOGIC 
+local keyAccepted = false
+
+local function checkKey(key)
+    for _, v in pairs(VALID_KEYS) do
+        if v == key then
+            return true
+        end
+    end
+    return false
+end
+
+Button.MouseButton1Click:Connect(function()
+    local entered = Input.Text
+
+    if checkKey(entered) then
+        keyAccepted = true
+        Status.TextColor3 = Color3.fromRGB(0, 255, 100)
+        Status.Text = "✅ Key accepted! Loading script..."
+        task.wait(1.5)
+        ScreenGui:Destroy()
+    else
+        Status.TextColor3 = Color3.fromRGB(255, 60, 60)
+        Status.Text = "❌ Invalid key! Get one at our Discord."
+        setclipboard("https://discord.gg/nDSy4jdVDc")
+    end
 end)
 
--- Add extra Discord promotion labels
-v2:AddLabel("⚠️ JOIN OUR DISCORD TO GET KEYS & UPDATES!")
-v2:AddLabel("discord.gg/FtgzNUc5pP")
-v2:AddButton("🔑 Get Key (Join Discord)", function()
-    setclipboard("https://discord.gg/nDSy4jdVDc")
-end)
-v2:AddButton("📢 Copy Discord Link", function()
-    setclipboard("https://discord.gg/nDSy4jdVDc")
-end)
+-- Block script until key is accepted
+repeat task.wait(0.1) until keyAccepted
 
 infoTab1 = v1:AddTab(" STATS ")
 infoTab1:AddLabel("\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144\226\149\144")
@@ -1799,3 +1921,4 @@ v409:Add("Day")
 v409:Add("Alora")
 
 v409:Add("2nd Alora Night")
+
