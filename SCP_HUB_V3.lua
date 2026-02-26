@@ -53,9 +53,9 @@ local Sub = Instance.new("TextLabel")
 Sub.Size = UDim2.new(1, 0, 0, 30)
 Sub.Position = UDim2.new(0, 0, 0, 50)
 Sub.BackgroundTransparency = 1
-Sub.Text = "Join discord.gg/nDSy4jdVDc 𝗖𝗟𝗜𝗖𝗞 𝗢𝗡 𝗧𝗛𝗜𝗦 𝗧𝗘𝗫𝗧 𝗧𝗢 𝗚𝗘𝗧 𝗧𝗛𝗘 𝗞𝗘𝗬"
+Sub.Text = "Join discord.gg/nDSy4jdVDc CLICK ON THIS TEXT TO GET THE KEY"
 Sub.TextColor3 = Color3.fromRGB(200, 200, 200)
-Sub.TextSize = 13
+Sub.TextSize = 15
 Sub.Font = Enum.Font.Gotham
 Sub.Parent = Box
 
