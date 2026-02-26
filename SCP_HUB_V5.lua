@@ -822,9 +822,9 @@ Button.MouseButton1Click:Connect(function()
                     end
                 end
             end)
-            v227:AddLabel("EX: username - mohaop just type mo / display name - ZX_BLA BLA just type ZX")
+            v227:AddLabel("EX: username - tejaz just type te / display name - SCP_TEJAZ just type SCP")
 
-            -- ROCKS TAB
+            -- ROCKS TABB
             local vu293 = game.Players.LocalPlayer
             rocksTab = v1:AddTab("ROCKS")
             rocksTab:AddSwitch("Auto Punch", function(p294)
@@ -1064,10 +1064,10 @@ Button.MouseButton1Click:Connect(function()
             settingsTab:AddButton("Enable Anti-AFK", function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/hassanxzayn-lua/Anti-afk/main/antiafkbyhassanxzyn"))()
             end)
-            settingsTab:AddButton("Enable Anti-LAG/AFK by moha", function()
+            settingsTab:AddButton("Enable Anti-LAG/AFK by mohaxtejaz", function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/Moha-space/SPACE-HUB-/refs/heads/main/MAIN%20AINTI%20AFK%20.txt"))()
             end)
-            settingsTab:AddButton("Enable Anti-AFK v2 by moha", function()
+            settingsTab:AddButton("Enable Anti-AFK v2 by mohaxtejaz", function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/Moha-space/SPACE-HUB-/refs/heads/main/New%20anti%20afk%20v2"))()
             end)
             local vu389 = {}
