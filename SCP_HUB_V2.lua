@@ -103,7 +103,7 @@ Instance.new("UICorner", Button).CornerRadius = UDim.new(0, 6)
 -- that contains one key per line
 -- ══════════════════════════════════════
 
-local KEY_URL = "https://pastebin.com/raw/REPLACE_THIS_WITH_YOUR_PASTEBIN_ID"
+local KEY_URL = "https://pastebin.com/raw/n7UWskEA"
 
 local function getValidKeys()
     local success, result = pcall(function()
