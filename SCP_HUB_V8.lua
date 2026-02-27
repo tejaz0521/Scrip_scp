@@ -170,7 +170,7 @@ Button.MouseButton1Click:Connect(function()
             -- ══════════════════════════════════════
 
             local v1 = loadstring(game:HttpGet("https://raw.githubusercontent.com/Moha-space/elerium-v2-ui-library/refs/heads/main/Library", true))():AddWindow("                                   SCP MUSCLE LEGENDS | PUBLIC ", {
-                main_color = Color3.fromRGB(139, 0, 0),
+                main_color = Color3.fromRGB(0, 0, 0),
                 min_size = Vector2.new(615, 685),
                 can_resize = false,
                 scrollable = true
