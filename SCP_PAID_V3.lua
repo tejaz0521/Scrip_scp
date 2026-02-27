@@ -11,7 +11,7 @@
 -- Add usernames one per line in that pastebin
 -- ══════════════════════════════════════
 
-local WHITELIST_URL = "https://pastebin.com/raw/REPLACE_WITH_YOUR_PASTEBIN_ID"
+local WHITELIST_URL = "https://pastebin.com/raw/RULnktcp"
 
 local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
