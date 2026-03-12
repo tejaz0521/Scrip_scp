@@ -107,7 +107,7 @@ Instance.new("UICorner", GetKeyButton).CornerRadius = UDim.new(0, 6)
 
 -- GET KEY button click - copy discord link
 GetKeyButton.MouseButton1Click:Connect(function()
-    setclipboard("https://discord.gg/nDSy4jdVDc")
+    setclipboard("https://discord.gg/KDx3D8hARN")
     Status.TextColor3 = Color3.fromRGB(0, 200, 255)
     Status.Text = "Discord link copied! Join to get your key!"
 end)
