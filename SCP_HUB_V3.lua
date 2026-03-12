@@ -8,6 +8,23 @@ local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 
+-- SCP LOGO OVERLAY
+task.spawn(function()
+    task.wait(0.5)
+    local logoOverlay = Instance.new("ScreenGui")
+    logoOverlay.Name = "SCPLogoOverlay"
+    logoOverlay.ResetOnSpawn = false
+    logoOverlay.DisplayOrder = 999
+    logoOverlay.Parent = LocalPlayer:WaitForChild("PlayerGui")
+    local logoImg = Instance.new("ImageLabel")
+    logoImg.Size = UDim2.new(0, 60, 0, 60)
+    logoImg.Position = UDim2.new(0, 8, 0, 8)
+    logoImg.BackgroundTransparency = 1
+    logoImg.Image = "rbxassetid://125515680929159"
+    logoImg.ScaleType = Enum.ScaleType.Fit
+    logoImg.Parent = logoOverlay
+end)
+
 -- Wait for character and leaderstats to fully load before doing anything
 local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
 local leaderstats = LocalPlayer:WaitForChild("leaderstats", 15)
@@ -43,7 +60,7 @@ Title.Size = UDim2.new(1, 0, 0, 45)
 Title.BackgroundColor3 = Color3.fromRGB(139, 0, 0)
 Title.BorderSizePixel = 0
 Title.Text = "🔑 SCP HUB - KEY SYSTEM"
-Title.TextColor3 = Color3.fromRGB(128, 127, 200)
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.TextSize = 17
 Title.Font = Enum.Font.GothamBold
 Title.Parent = Box
@@ -53,9 +70,9 @@ local Sub = Instance.new("TextLabel")
 Sub.Size = UDim2.new(1, 0, 0, 30)
 Sub.Position = UDim2.new(0, 0, 0, 50)
 Sub.BackgroundTransparency = 1
-Sub.Text = "Join discord.gg/nDSy4jdVDc CLICK ON THIS TEXT TO GET THE KEY"
+Sub.Text = "Join discord.gg/nDSy4jdVDc to get your key!"
 Sub.TextColor3 = Color3.fromRGB(200, 200, 200)
-Sub.TextSize = 15
+Sub.TextSize = 13
 Sub.Font = Enum.Font.Gotham
 Sub.Parent = Box
 
@@ -138,13 +155,13 @@ end
 
 Button.MouseButton1Click:Connect(function()
     local entered = Input.Text
-    Status.TextColor3 = Color3.fromRGB(128, 0, 0)
+    Status.TextColor3 = Color3.fromRGB(255, 200, 0)
     Status.Text = "⏳ Checking key..."
     Button.Active = false
 
     task.spawn(function()
         if checkKey(entered) then
-            Status.TextColor3 = Color3.fromRGB(0, 0, 0)
+            Status.TextColor3 = Color3.fromRGB(0, 255, 100)
             Status.Text = "✅ Key accepted! Loading script..."
             task.wait(1.5)
             ScreenGui:Destroy()
@@ -154,7 +171,7 @@ Button.MouseButton1Click:Connect(function()
             -- ══════════════════════════════════════
 
             local v1 = loadstring(game:HttpGet("https://raw.githubusercontent.com/Moha-space/elerium-v2-ui-library/refs/heads/main/Library", true))():AddWindow("                                   SCP MUSCLE LEGENDS | PUBLIC ", {
-                main_color = Color3.fromRGB(0, 0, 0),
+                main_color = Color3.fromRGB(139, 0, 0),
                 min_size = Vector2.new(615, 685),
                 can_resize = false,
                 scrollable = true
@@ -173,17 +190,17 @@ Button.MouseButton1Click:Connect(function()
                     task.wait(0.02)
                 end
             end)
-            v2:AddLabel("══════════════════════════════════════")
+            v2:AddLabel("══════════════════════════════")
             v2:AddLabel("DISCORD INVITE LINK:")
             v2:AddButton("Join Our Discord - discord.gg/nDSy4jdVDc", function()
                 setclipboard("https://discord.gg/nDSy4jdVDc")
                 game:GetService("StarterGui"):SetCore("SendNotification", {
                     Title = "SCP HUB",
-                    Text = "Discord link copied! Open Discord and paste the link.",
+                    Text = "Discord link copied! Open Discord and paste it.",
                     Duration = 5
                 })
             end)
-            v2:AddLabel("Press the button above to copy the Discord link!")
+            v2:AddLabel("Click button above to copy the Discord link!")
 
             -- STATS TAB
             local vu172 = game:GetService("Players")
@@ -219,7 +236,6 @@ Button.MouseButton1Click:Connect(function()
                     vu18()
                 end
             end)
-                
             infoTab1:AddLabel("PLAYER STATS").TextSize = 20
             infoTab1:AddLabel(" GAINED ").TextSize = 20
             local vu19 = {
@@ -267,7 +283,6 @@ Button.MouseButton1Click:Connect(function()
                     end
                 end
             end)()
-            
             infoTab1:AddLabel(" CURRENT STATS ").TextSize = 20
             local function vu44(p43)
                 if p43 >= 1000000000000000 then return tostring(math.floor(p43 * 10 / 1000000000000000) / 10) .. "Qa"
@@ -380,7 +395,6 @@ Button.MouseButton1Click:Connect(function()
                 end
             end, { clear = false, placeholder = "Type username or display name..." })
             infoTab1:AddLabel("EX  username -mohaop just type mo / display name - ZX_BLA BLA just type ZX")
-            
             vu121 = game.Players.LocalPlayer
             vu109(vu121)
             vu120(vu121)
@@ -559,7 +573,6 @@ Button.MouseButton1Click:Connect(function()
 
             -- REBIRTH TAB
             rebirthTab = v1:AddTab("REBIRTH")
-            rebirthTab:AddLabel("AUTO KING ")
             local vu174 = false
             rebirthTab:AddSwitch("Auto King ", function(p175)
                 vu174 = p175
@@ -581,7 +594,6 @@ Button.MouseButton1Click:Connect(function()
                     getgenv().kingLockConnection = nil
                 end
             end)
-            rebirthTab:AddLabel("REBIRTH FUNCTIONS")
             local vu180 = false
             local vu181 = nil
             rebirthTab:AddTextBox("Target Rebirth Amount", function(p182)
@@ -605,7 +617,6 @@ Button.MouseButton1Click:Connect(function()
                     end)()
                 end
             end)
-            rebirthTab:AddLabel(" AUTO WEIGHT ")
             rebirthTab:AddSwitch("AUTO WEIGHT", function(p186)
                 isAutoStrength = p186
                 local v187 = game.Players.LocalPlayer
@@ -621,7 +632,6 @@ Button.MouseButton1Click:Connect(function()
                     if v190 and v190.Name == "Weight" then v190.Parent = v188 end
                 end
             end):Set(false)
-            rebirthTab:AddLabel(" AUTO SIZE 2 ")
             local vu191 = nil
             rebirthTab:AddSwitch("Auto Size 2", function(p192)
                 if p192 then
@@ -634,13 +644,11 @@ Button.MouseButton1Click:Connect(function()
                     if vu191 then task.cancel(vu191); vu191 = nil end
                 end
             end)
-            rebirthTab:AddLabel(" HIDE FRAMES ")
             rebirthTab:AddSwitch("Hide All Frames", function(p193)
                 for _, v198 in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
                     if v198.Name:match("Frame$") then v198.Visible = not p193 end
                 end
             end)
-            rebirthTab:AddLabel(" LOCK POSITION ")
             rebirthTab:AddSwitch("Lock Position", function(p199)
                 if p199 then
                     local vu200 = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
@@ -680,7 +688,6 @@ Button.MouseButton1Click:Connect(function()
             end
             local v227 = v1:AddTab("KILLS")
             v227:Show()
-            v227:AddLabel(" KILL FUNCTION ")
             v227:AddSwitch("Anti Knockback", function(p228)
                 if p228 then
                     local v230 = game.Workspace:FindFirstChild(game.Players.LocalPlayer.Name):FindFirstChild("HumanoidRootPart")
@@ -763,7 +770,6 @@ Button.MouseButton1Click:Connect(function()
                     elseif v272 and v272:FindFirstChild("attackTime") then v272.attackTime.Value = 0.35 end
                 end
             end):Set(false)
-            v227:AddLabel(" KILL SINGLE PLAYER ")
             local vu273 = ""
             v227:AddTextBox("Player Username or Display Name", function(p274)
                 vu273 = p274
@@ -804,7 +810,6 @@ Button.MouseButton1Click:Connect(function()
                     end)
                 end
             end)
-            v227:AddLabel(" SPY PLAYER ")
             local vu284 = ""
             local vu285 = false
             local vu286 = nil
@@ -902,7 +907,6 @@ Button.MouseButton1Click:Connect(function()
                     end
                 end
             end
-            rocksTab:AddLabel(" LOCK POSITION ")
             rocksTab:AddSwitch("Lock Position", function(p324)
                 if p324 then
                     local vu325 = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
@@ -916,7 +920,6 @@ Button.MouseButton1Click:Connect(function()
                     getgenv().posLock = nil
                 end
             end)
-            rocksTab:AddLabel(" The Rocks [ MAKE SURE U HAVE THE REQUIRED DURABILITY] ")
             local rockList = {
                 {"Jungle Rock", 10000000},
                 {"Muscle King Rock", 5000000},
@@ -958,7 +961,6 @@ Button.MouseButton1Click:Connect(function()
 
             -- TELEPORT TAB
             teleportTab = v1:AddTab("TELEPORT")
-            teleportTab:AddLabel(" Teleport ")
             local vu346 = {
                 BEACH = Vector3.new(0, 0, 0),
                 ["FROST GYM"] = Vector3.new(-2650, 7, -393),
@@ -979,7 +981,6 @@ Button.MouseButton1Click:Connect(function()
                 if v350 and v349 then v349.CFrame = CFrame.new(v350) end
             end)
             for k, _ in pairs(vu346) do v351:Add(k) end
-            teleportTab:AddLabel(" Pets ")
             local vu356 = game:GetService("ReplicatedStorage")
             local vu357 = "Neon Guardian"
             local v359 = teleportTab:AddDropdown("Select Pet", function(p358)
@@ -999,7 +1000,6 @@ Button.MouseButton1Click:Connect(function()
                     end)
                 end
             end)
-            teleportTab:AddLabel(" AURAS ")
             local vu362 = "Blue Aura"
             local v364 = teleportTab:AddDropdown("Select Aura", function(p363)
                 vu362 = p363
@@ -1018,7 +1018,6 @@ Button.MouseButton1Click:Connect(function()
                     end)
                 end
             end)
-            teleportTab:AddLabel(" SPIN WHEEL ")
             teleportTab:AddSwitch("Auto Spin Wheel", function(p367)
                 _G.AutoSpinWheel = p367
                 if p367 then
@@ -1032,7 +1031,6 @@ Button.MouseButton1Click:Connect(function()
 
             -- SETTINGS TAB
             settingsTab = v1:AddTab("SETTINGS")
-            settingsTab:AddLabel(" GRAPHICS ")
             settingsTab:AddSwitch("Low Graphics", function(p368)
                 if p368 then
                     game.Lighting.GlobalShadows = false
@@ -1056,7 +1054,6 @@ Button.MouseButton1Click:Connect(function()
                     end
                 end
             end)
-            settingsTab:AddLabel(" GAMEPASS / AD PORTAL ")
             settingsTab:AddButton("Free AutoLift Gamepass", function()
                 local v377 = game:GetService("ReplicatedStorage").gamepassIds
                 local v378 = game:GetService("Players").LocalPlayer
@@ -1081,7 +1078,6 @@ Button.MouseButton1Click:Connect(function()
                     Duration = 3
                 })
             end)
-            settingsTab:AddLabel(" ANTI AFK ")
             settingsTab:AddButton("Enable Anti-AFK", function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/hassanxzayn-lua/Anti-afk/main/antiafkbyhassanxzyn"))()
             end)
@@ -1091,7 +1087,6 @@ Button.MouseButton1Click:Connect(function()
             settingsTab:AddButton("Enable Anti-AFK v2 by moha", function()
                 loadstring(game:HttpGet("https://raw.githubusercontent.com/Moha-space/SPACE-HUB-/refs/heads/main/New%20anti%20afk%20v2"))()
             end)
-            settingsTab:AddLabel(" WALK ON WATER ")
             local vu389 = {}
             local vu390 = 2048
             local vu391 = Vector3.new(-2, -9.5, -2)
@@ -1124,7 +1119,6 @@ Button.MouseButton1Click:Connect(function()
             settingsTab:AddSwitch("Walk on Water", function(p406)
                 if p406 then vu400() else vu405() end
             end)
-            settingsTab:AddLabel(" CHANGE TIME ")
             local v409 = settingsTab:AddDropdown("Change Time", function(p407)
                 local v408 = game:GetService("Lighting")
                 if p407 == "Night" then
@@ -1146,6 +1140,139 @@ Button.MouseButton1Click:Connect(function()
             v409:Add("Day")
             v409:Add("Alora")
             v409:Add("2nd Alora Night")
+
+
+            -- ══════════════════════════════════════
+            -- GIFTING TAB
+            -- ══════════════════════════════════════
+            local giftTab = v1:AddTab("GIFTING")
+            local giftPlayers = game:GetService("Players")
+            local giftLocalPlayer = giftPlayers.LocalPlayer
+            local giftRS = game:GetService("ReplicatedStorage")
+
+            giftTab:AddLabel("[ GIFTING TAB ]")
+            giftTab:AddLabel("NOTE: Get on a Machine while gifting!")
+
+            local proteinEggCount = giftTab:AddLabel("Protein Eggs: 0")
+            local tropicalShakeCount = giftTab:AddLabel("Tropical Shakes: 0")
+
+            local function updateInventory()
+                local consumables = giftLocalPlayer:FindFirstChild("consumablesFolder")
+                local eggs = 0
+                local shakes = 0
+                if consumables then
+                    for _, item in ipairs(consumables:GetChildren()) do
+                        if item.Name == "Protein Egg" then eggs = eggs + 1 end
+                        if item.Name == "Tropical Shake" then shakes = shakes + 1 end
+                    end
+                end
+                proteinEggCount.Text = "Protein Eggs: " .. eggs
+                tropicalShakeCount.Text = "Tropical Shakes: " .. shakes
+            end
+            task.spawn(function()
+                while task.wait(5) do updateInventory() end
+            end)
+            updateInventory()
+
+            giftTab:AddLabel("══════════════════════════════")
+            giftTab:AddLabel("PROTEIN EGG GIFTER")
+
+            local selectedEggPlayer = nil
+            local eggAmount = 0
+
+            local eggPlayerDropdown = giftTab:AddDropdown("Choose Player (Egg)", function(selected)
+                local name = selected:match("| (.+)$")
+                if name then selectedEggPlayer = giftPlayers:FindFirstChild(name) end
+            end)
+            for _, player in ipairs(giftPlayers:GetPlayers()) do
+                if player ~= giftLocalPlayer then
+                    eggPlayerDropdown:Add(player.DisplayName .. " | " .. player.Name)
+                end
+            end
+            giftPlayers.PlayerAdded:Connect(function(player)
+                if player ~= giftLocalPlayer then
+                    eggPlayerDropdown:Add(player.DisplayName .. " | " .. player.Name)
+                end
+            end)
+            giftPlayers.PlayerRemoving:Connect(function(player)
+                if player ~= giftLocalPlayer then
+                    eggPlayerDropdown:Remove(player.DisplayName .. " | " .. player.Name)
+                end
+            end)
+            giftTab:AddTextBox("Amount of Eggs to Gift", function(val)
+                eggAmount = tonumber(val) or 0
+            end, { clear = false, placeholder = "Enter amount e.g. 5" })
+            giftTab:AddButton("Gift Protein Eggs", function()
+                if not selectedEggPlayer then
+                    game:GetService("StarterGui"):SetCore("SendNotification", {Title = "SCP HUB", Text = "Select a player first!", Duration = 3})
+                    return
+                end
+                if eggAmount <= 0 then
+                    game:GetService("StarterGui"):SetCore("SendNotification", {Title = "SCP HUB", Text = "Enter a valid amount!", Duration = 3})
+                    return
+                end
+                task.spawn(function()
+                    for i = 1, eggAmount do
+                        local egg = giftLocalPlayer.consumablesFolder:FindFirstChild("Protein Egg")
+                        if egg then
+                            giftRS.rEvents.giftRemote:InvokeServer(selectedEggPlayer, egg)
+                        end
+                        task.wait(0.5)
+                    end
+                    game:GetService("StarterGui"):SetCore("SendNotification", {Title = "SCP HUB", Text = "Gifted " .. eggAmount .. " Protein Egg(s) to " .. selectedEggPlayer.Name .. "!", Duration = 4})
+                    updateInventory()
+                end)
+            end)
+
+            giftTab:AddLabel("══════════════════════════════")
+            giftTab:AddLabel("TROPICAL SHAKE GIFTER")
+
+            local selectedShakePlayer = nil
+            local shakeAmount = 0
+
+            local shakePlayerDropdown = giftTab:AddDropdown("Choose Player (Shake)", function(selected)
+                local name = selected:match("| (.+)$")
+                if name then selectedShakePlayer = giftPlayers:FindFirstChild(name) end
+            end)
+            for _, player in ipairs(giftPlayers:GetPlayers()) do
+                if player ~= giftLocalPlayer then
+                    shakePlayerDropdown:Add(player.DisplayName .. " | " .. player.Name)
+                end
+            end
+            giftPlayers.PlayerAdded:Connect(function(player)
+                if player ~= giftLocalPlayer then
+                    shakePlayerDropdown:Add(player.DisplayName .. " | " .. player.Name)
+                end
+            end)
+            giftPlayers.PlayerRemoving:Connect(function(player)
+                if player ~= giftLocalPlayer then
+                    shakePlayerDropdown:Remove(player.DisplayName .. " | " .. player.Name)
+                end
+            end)
+            giftTab:AddTextBox("Amount of Shakes to Gift", function(val)
+                shakeAmount = tonumber(val) or 0
+            end, { clear = false, placeholder = "Enter amount e.g. 5" })
+            giftTab:AddButton("Gift Tropical Shakes", function()
+                if not selectedShakePlayer then
+                    game:GetService("StarterGui"):SetCore("SendNotification", {Title = "SCP HUB", Text = "Select a player first!", Duration = 3})
+                    return
+                end
+                if shakeAmount <= 0 then
+                    game:GetService("StarterGui"):SetCore("SendNotification", {Title = "SCP HUB", Text = "Enter a valid amount!", Duration = 3})
+                    return
+                end
+                task.spawn(function()
+                    for i = 1, shakeAmount do
+                        local shake = giftLocalPlayer.consumablesFolder:FindFirstChild("Tropical Shake")
+                        if shake then
+                            giftRS.rEvents.giftRemote:InvokeServer(selectedShakePlayer, shake)
+                        end
+                        task.wait(0.5)
+                    end
+                    game:GetService("StarterGui"):SetCore("SendNotification", {Title = "SCP HUB", Text = "Gifted " .. shakeAmount .. " Tropical Shake(s) to " .. selectedShakePlayer.Name .. "!", Duration = 4})
+                    updateInventory()
+                end)
+            end)
 
         else
             -- Wrong key
